@@ -3,17 +3,19 @@ package daw;
 import java.util.Objects;
 
 public class Productos {
-    
+
     private TipoProducto tipo;
     private Consumibles consumible;
     private double precio;
     private String descripcion;
+    private int id;
 
-    public Productos(TipoProducto tipo, Consumibles consumible, double precio, String descripcion) {
+    public Productos(TipoProducto tipo, Consumibles consumible, double precio, String descripcion, int id) {
         this.tipo = tipo;
         this.consumible = consumible;
         this.precio = precio;
         this.descripcion = descripcion;
+        this.id = id;
     }
 
     public Productos() {
@@ -49,6 +51,10 @@ public class Productos {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public int getId() {
+        return id;
     }
 
     @Override
@@ -96,7 +102,5 @@ public class Productos {
         sb.append('}');
         return sb.toString();
     }
-    
-    
-    
+
 }
