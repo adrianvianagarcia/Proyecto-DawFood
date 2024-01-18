@@ -7,5 +7,6 @@ public class Main {
         //Creamos todos los productos
         Productos hamburguesaSimple = new Productos(TipoProducto.COMIDA, Consumibles.HAMBURGUESA
                 , 3.5, "Hamburguesa simple");
+        
     }
 }
