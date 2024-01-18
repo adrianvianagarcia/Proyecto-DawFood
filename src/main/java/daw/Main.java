@@ -3,6 +3,9 @@ package daw;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        
+        //Creamos todos los productos
+        Productos hamburguesaSimple = new Productos(TipoProducto.COMIDA, Consumibles.HAMBURGUESA
+                , 3.5, "Hamburguesa simple");
     }
 }
