@@ -9,16 +9,26 @@ public class Productos {
     private double precio;
     private String descripcion;
     private int id;
+    private double iva;
 
-    public Productos(TipoProducto tipo, Consumibles consumible, double precio, String descripcion, int id) {
+    public Productos(TipoProducto tipo, Consumibles consumible, double precio, String descripcion, int id, double iva) {
         this.tipo = tipo;
         this.consumible = consumible;
         this.precio = precio;
         this.descripcion = descripcion;
         this.id = id;
+        this.iva = iva;
     }
 
     public Productos() {
+    }
+    
+    public double getIva() {
+        return iva;
+    }
+
+    public void setIva(double iva) {
+        this.iva = iva;
     }
 
     public TipoProducto getTipo() {
@@ -60,10 +70,12 @@ public class Productos {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 29 * hash + Objects.hashCode(this.tipo);
-        hash = 29 * hash + Objects.hashCode(this.consumible);
-        hash = 29 * hash + (int) (Double.doubleToLongBits(this.precio) ^ (Double.doubleToLongBits(this.precio) >>> 32));
-        hash = 29 * hash + Objects.hashCode(this.descripcion);
+        hash = 23 * hash + Objects.hashCode(this.tipo);
+        hash = 23 * hash + Objects.hashCode(this.consumible);
+        hash = 23 * hash + (int) (Double.doubleToLongBits(this.precio) ^ (Double.doubleToLongBits(this.precio) >>> 32));
+        hash = 23 * hash + Objects.hashCode(this.descripcion);
+        hash = 23 * hash + this.id;
+        hash = 23 * hash + (int) (Double.doubleToLongBits(this.iva) ^ (Double.doubleToLongBits(this.iva) >>> 32));
         return hash;
     }
 
@@ -80,6 +92,12 @@ public class Productos {
         }
         final Productos other = (Productos) obj;
         if (Double.doubleToLongBits(this.precio) != Double.doubleToLongBits(other.precio)) {
+            return false;
+        }
+        if (this.id != other.id) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.iva) != Double.doubleToLongBits(other.iva)) {
             return false;
         }
         if (!Objects.equals(this.descripcion, other.descripcion)) {
@@ -99,8 +117,12 @@ public class Productos {
         sb.append(", consumible=").append(consumible);
         sb.append(", precio=").append(precio);
         sb.append(", descripcion=").append(descripcion);
+        sb.append(", id=").append(id);
+        sb.append(", iva=").append(iva);
         sb.append('}');
         return sb.toString();
     }
+
+    
 
 }

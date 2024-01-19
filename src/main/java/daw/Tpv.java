@@ -7,10 +7,10 @@ import org.apache.commons.lang3.RandomStringUtils;
 
 public class Tpv {
 
-    final UUID numeroDeSerie;
-    String localizacion;
-    final LocalDateTime fechaActual;
-    final String contraseña;
+    private final UUID numeroDeSerie;
+    private String localizacion;
+    private final LocalDateTime fechaActual;
+    private final String contraseña;
 
     public Tpv(String localizacion) {
         this.numeroDeSerie = UUID.randomUUID();
