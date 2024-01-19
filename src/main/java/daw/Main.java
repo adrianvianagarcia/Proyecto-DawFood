@@ -57,6 +57,5 @@ public class Main {
                  1.25, "Yogur de fresa", 17);
         
 
->>>>>>> origin/main
     }
 }
