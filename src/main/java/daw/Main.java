@@ -1,5 +1,9 @@
 package daw;
 
+import java.util.ArrayList;
+import java.util.UUID;
+import javax.swing.JOptionPane;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -55,8 +59,75 @@ public class Main {
         
         Productos yogurFresa = new Productos(TipoProducto.POSTRE, Consumibles.YOGURES,
                  1.25, "Yogur de fresa", 17);
-        
+        /*Creo un arrayList de mis objectos*/
+        ArrayList<Productos> productos= new ArrayList<>();
+            //comida
+            productos.add(hamburguesaQueso);
+            productos.add(hamburguesaSimple);
+            productos.add(kebabSimple);
+            productos.add(tacoFrances);
+            productos.add(pizzaMargarita);
+            productos.add(pizzaQueso);
+            //bebida
+            productos.add(agua);
+            productos.add(fantaNaranja);
+            productos.add(cocaCola);
+            productos.add(cervezaHeineken);
+            productos.add(cervezaMahou);
+            //postre
+            productos.add(tartaQueso);
+            productos.add(donut);
+            productos.add(platano);
+            productos.add(manzana);
+            productos.add(yogurCoco);
+            productos.add(yogurFresa);
+        /*Menú de opciones*/
+        int opcionMenuPrincipal= JOptionPane.showOptionDialog(null,"¿Qué desea ver?"
+                ,"Selector opciones",JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE, 
+                null,
+                new Object[]{"Comida","Bebida","Postre","Volver"},null);
+        switch (opcionMenuPrincipal){
+            case 0 ->{
+                int subMenuComida = JOptionPane.showOptionDialog(null, "¿Qué desea comer?",
+                         "Selector opciones", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        new Object[]{"Hamburguesa", "Kebab", "Pizza", "Volver"}, null);
+                switch (subMenuComida){
+                    case 0->{
+                        Object seleccion = JOptionPane.showInputDialog(
+                                null,
+                                "Seleccione una Hamburguesa",
+                                "Hamburguesas",
+                                JOptionPane.QUESTION_MESSAGE,
+                                null, // null para icono defecto
+                                new Object[]{"Hamburguesa simple", "Hamburguesa queso",},
+                                null);
+                        if(seleccion.equals("Hamburguesa simple")){
+                            JOptionPane.showMessageDialog(null,"Su eleccion es "+ seleccion);
+                        }else{
+                            JOptionPane.showMessageDialog(null,"Su eleccion es"+ seleccion);
+                        }
+                    }
+                    case 1 -> {
 
->>>>>>> origin/main
+                    }
+                    case 2 -> {
+
+                    }
+                    case 4 -> {
+
+                    }
+                }
+            }
+            case 1 -> {
+                System.out.println("bebida");
+            }
+            case 2 -> {
+                System.out.println("postre");
+            }
+            case 3 -> {
+                System.out.println("volver");
+            }
+        }
     }
 }

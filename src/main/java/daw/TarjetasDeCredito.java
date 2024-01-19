@@ -29,9 +29,9 @@ public class TarjetasDeCredito {
         this.saldo = saldo;
     }
    
-    public TarjetasDeCredito generarXTarjeta(int numACrear){
-        for(int i=0;i<numACrear;i++){
-            String refTrajeta=JOptionPane.showInputDialog("");
-        }
-    }
+//    public TarjetasDeCredito generarXTarjeta(int numACrear){
+//        for(int i=0;i<numACrear;i++){
+//            String refTrajeta=JOptionPane.showInputDialog("");
+//        }
+//    }
 }
