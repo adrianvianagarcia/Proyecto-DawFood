@@ -5,8 +5,7 @@ import java.util.UUID;
 import javax.swing.JOptionPane;
 
 public class Main {
-
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         //Creamos todos los productos
         Productos hamburguesaSimple = new Productos(TipoProducto.COMIDA, Consumibles.HAMBURGUESA,
@@ -81,53 +80,9 @@ public class Main {
             productos.add(manzana);
             productos.add(yogurCoco);
             productos.add(yogurFresa);
-        /*Menú de opciones*/
-        int opcionMenuPrincipal= JOptionPane.showOptionDialog(null,"¿Qué desea ver?"
-                ,"Selector opciones",JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE, 
-                null,
-                new Object[]{"Comida","Bebida","Postre","Volver"},null);
-        switch (opcionMenuPrincipal){
-            case 0 ->{
-                int subMenuComida = JOptionPane.showOptionDialog(null, "¿Qué desea comer?",
-                         "Selector opciones", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
-                        null,
-                        new Object[]{"Hamburguesa", "Kebab", "Pizza", "Volver"}, null);
-                switch (subMenuComida){
-                    case 0->{
-                        Object seleccion = JOptionPane.showInputDialog(
-                                null,
-                                "Seleccione una Hamburguesa",
-                                "Hamburguesas",
-                                JOptionPane.QUESTION_MESSAGE,
-                                null, // null para icono defecto
-                                new Object[]{"Hamburguesa simple", "Hamburguesa queso",},
-                                null);
-                        if(seleccion.equals("Hamburguesa simple")){
-                            JOptionPane.showMessageDialog(null,"Su eleccion es "+ seleccion);
-                        }else{
-                            JOptionPane.showMessageDialog(null,"Su eleccion es"+ seleccion);
-                        }
-                    }
-                    case 1 -> {
-
-                    }
-                    case 2 -> {
-
-                    }
-                    case 4 -> {
-
-                    }
-                }
-            }
-            case 1 -> {
-                System.out.println("bebida");
-            }
-            case 2 -> {
-                System.out.println("postre");
-            }
-            case 3 -> {
-                System.out.println("volver");
-            }
-        }
+        /*Creamos tpv*/
+        Tpv tpv =new Tpv("Estepona");
+        tpv.encenderTPV();
+                
     }
 }

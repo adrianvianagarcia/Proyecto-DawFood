@@ -3,6 +3,7 @@ package daw;
 import java.time.LocalDateTime;
 import java.util.Random;
 import java.util.UUID;
+import javax.swing.JOptionPane;
 import org.apache.commons.lang3.RandomStringUtils;
 
 public class Tpv {
@@ -41,6 +42,23 @@ public class Tpv {
         
         return contraseña;
     }
+    
+    public void encenderTPV() throws InterruptedException{
+    Object user=MenusDeOpciones.selectorDeUsuarios();
+    do{
+        if (user.equals("Cliente")) {
+
+        } else if (user.equals("Administrador")) {
+
+        } else {
+            apagarTVP();
+        } 
+    }while(user!="Apagar TPV");
+
+}
+    public void apagarTVP() throws InterruptedException{
+        JOptionPane.showMessageDialog(null,"Se apagará el TPV");
+    }
 
     @Override
     public String toString() {
@@ -49,7 +67,7 @@ public class Tpv {
         sb.append("numeroDeSerie=").append(numeroDeSerie);
         sb.append(", localizacion=").append(localizacion);
         sb.append(", fechaActual=").append(fechaActual);
-        sb.append(", contrase\u00f1a=").append(contraseña);
+        sb.append(", contraseña=").append(contraseña);
         sb.append('}');
         return sb.toString();
     }

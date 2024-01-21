@@ -123,19 +123,19 @@ public class Productos {
         return sb.toString();
     }
     
-    /*Esto irá en una clase nueva llamada catalogos*/
-    public void borrarProductoExistente(int id) {
-        //Crear la clase catalogo que contenga todos los productos para asi poder
-        //eliminarlos
-        ArrayList<Productos> catalogo = new ArrayList<>();
-        Productos hamburguesaSimple = new Productos(TipoProducto.COMIDA, Consumibles.HAMBURGUESA,
-                3.5, "Hamburguesa simple", 1, 0.1);
-        Productos hamburguesaQueso = new Productos(TipoProducto.COMIDA, Consumibles.HAMBURGUESA,
-                4, "Hamburguesa con queso", 2, 0.1);
-        //Crear metodos de ordenar la lista (ordenar por id, precio...)
-        Collections.sort(catalogo, (l1, l2) -> Integer.compare(hamburguesaSimple.getId(), hamburguesaQueso.getId()));
-        catalogo.remove(id);
-    }
+//    /*Esto irá en una clase nueva llamada catalogos*/
+//    public void borrarProductoExistente(int id) {
+//        //Crear la clase catalogo que contenga todos los productos para asi poder
+//        //eliminarlos
+//        ArrayList<Productos> catalogo = new ArrayList<>();
+//        Productos hamburguesaSimple = new Productos(TipoProducto.COMIDA, Consumibles.HAMBURGUESA,
+//                3.5, "Hamburguesa simple", 1, 0.1);
+//        Productos hamburguesaQueso = new Productos(TipoProducto.COMIDA, Consumibles.HAMBURGUESA,
+//                4, "Hamburguesa con queso", 2, 0.1);
+//        //Crear metodos de ordenar la lista (ordenar por id, precio...)
+//        Collections.sort(catalogo, (l1, l2) -> Integer.compare(hamburguesaSimple.getId(), hamburguesaQueso.getId()));
+//        catalogo.remove(id);
+//    }
     
 
 }
