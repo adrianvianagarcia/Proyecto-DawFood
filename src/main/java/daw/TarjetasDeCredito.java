@@ -45,17 +45,31 @@ public class TarjetasDeCredito {
         this.saldo = saldo;
     }
 
-    /*Verificar tarjeta funcionará cuando el usuario haya creado su tarjeta (Lo haremos
-    con un constructor vacio haciendo setters). para verificar se hará tarjetaCliente.*/
-    public boolean verificarTarjeta(ArrayList<TarjetasDeCredito> tarjetas, int numTarjeta) {
-        boolean tarjetaValida = false;
-        
-        for (int i = 0; i < tarjetas.size(); i++) {
-            if (tarjetas.get(i).getNumTarjeta() == numTarjeta) {
-                tarjetaValida = true;
+public boolean verificarNumeroTarjeta(ArrayList<TarjetasDeCredito> tarjetas, int ultimosCuatroDigitos) {
+        for (TarjetasDeCredito tarjeta : tarjetas) {
+            if (tarjeta.getNumTarjeta() == ultimosCuatroDigitos) {
+                return true;
             }
         }
-        return tarjetaValida;
+        return false;
+    }
+
+    public boolean verificarCVV(ArrayList<TarjetasDeCredito> tarjetas, int cvv) {
+        for (TarjetasDeCredito tarjeta : tarjetas) {
+            if (tarjeta.getCvv()== cvv) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean verificarFechaCaducidad(ArrayList<TarjetasDeCredito> tarjetas, LocalDate fechaCaducidad) {
+        for (TarjetasDeCredito tarjeta : tarjetas) {
+            if (tarjeta.getFechaCaducidad()== fechaCaducidad) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
