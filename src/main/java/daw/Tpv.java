@@ -44,6 +44,14 @@ public class Tpv {
         return contraseña;
     }
 
+    public boolean verifContraseña(String contraseñaUser, String contraseña) {
+        boolean errorContra = true;
+        if (contraseñaUser == contraseña) {
+            errorContra = false;
+        }
+        return errorContra;
+    }
+
     public void encenderTPV() throws InterruptedException {
         //Creamos todos los productos
         Productos hamburguesaSimple = new Productos(TipoProducto.COMIDA, Consumibles.HAMBURGUESA,
@@ -162,17 +170,17 @@ public class Tpv {
                             } else if (productoElegido.equals("Fanta de Naranja")) {
                                 cesta.guardarElemento(fantaNaranja);
                                 System.out.println(cesta);
-                                //kebabs
+                                //cervezas
                             } else if (productoElegido.equals("Cerveza Mahou")) {
                                 cesta.guardarElemento(cervezaMahou);
                                 System.out.println(cesta);
                             } else if (productoElegido.equals("Cerveza Heineken")) {
                                 cesta.guardarElemento(cervezaHeineken);
                                 System.out.println(cesta);
-                                //Pizzas
+                                //agua
                             } else if (productoElegido.equals("Agua")) {
                                 cesta.guardarElemento(agua);
-                                System.out.println(cesta);
+                                System.out.println(agua.getPrecio());
                             }
                         }
 
@@ -184,14 +192,14 @@ public class Tpv {
                             } else if (productoElegido.equals("Manzana")) {
                                 cesta.guardarElemento(manzana);
                                 System.out.println(cesta);
-                                //kebabs
+                                //bolleria
                             } else if (productoElegido.equals("Tarta de Queso")) {
                                 cesta.guardarElemento(tartaQueso);
                                 System.out.println(cesta);
                             } else if (productoElegido.equals("Donut Glasé")) {
                                 cesta.guardarElemento(donut);
                                 System.out.println(cesta);
-                                //Pizzas
+                                //yogur
                             } else if (productoElegido.equals("Yogur de coco")) {
                                 cesta.guardarElemento(yogurCoco);
                                 System.out.println(cesta);
@@ -200,13 +208,22 @@ public class Tpv {
                                 System.out.println(cesta);
                             }
                         }
-                        case 3 -> {
+                        case 3 -> {//carrito
+                            cesta.cesta.forEach(System.out::println);
+                        }
+                        case 4 -> {
                             break;
                         }
                     }
-                } while (opcionMenu != 3);
+                } while (opcionMenu != 4);
             } else if (user.equals("Administrador")) {
-
+                String contraseña = generarContraseña();
+                System.out.println(contraseña);
+                 String contraseñaUser;
+                do {
+                    contraseñaUser = JOptionPane.showInputDialog(null,
+                            "Introduce la contraseña del TPV: ");
+                } while (verifContraseña(contraseñaUser, contraseña)==true);
             } else {
                 apagarTVP();
             }
