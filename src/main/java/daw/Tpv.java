@@ -130,10 +130,11 @@ public class Tpv {
                     opcionMenu = MenusDeOpciones.selectorDeProducto();
                     switch (opcionMenu) {
                         case 0 -> {//comida
-                            int opcionTipoProducto;
-                            do {
-                                opcionTipoProducto = MenusDeOpciones.selectorComidas();
-                            } while (opcionTipoProducto != 3);
+                            Object productoElegido=MenusDeOpciones.selectorComidas();
+                            if(productoElegido.equals("Hamburguesa simple")){
+                                cesta.guardarElemento(hamburguesaSimple);
+                                System.out.println(cesta);
+                            }
                         }
 
                         case 1 -> {

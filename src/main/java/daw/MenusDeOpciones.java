@@ -31,8 +31,9 @@ public class MenusDeOpciones {
         return opcion;
         }
     //COMIDAS
-    public static int selectorComidas(){
+    public static Object selectorComidas(){//devuelve directamente el id del producto
         int opcion;
+        Object productoElegido="Volver";
         do{
             opcion = JOptionPane.showOptionDialog(null, "¿Qué desea comer?",
                     "Selector comida", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
@@ -40,10 +41,18 @@ public class MenusDeOpciones {
                     new Object[]{"Hamburguesa", "Kebab", "Pizza", "Volver"}, null);
                 switch (opcion) {
                     case 0 -> {//hamburguesas
-                        int opcionHamburguesa;
+                        Object opcionHamburguesa;
                         do {
                             opcionHamburguesa = selectorHamburguesas();
-                        } while (opcionHamburguesa != 2);
+                            if(opcionHamburguesa.equals("Hamburguesa simple")){
+                                productoElegido=opcionHamburguesa;
+                                break;
+                            }else if(opcionHamburguesa.equals("Hamburguesa queso")){
+                                productoElegido=opcionHamburguesa;
+                                break;
+                            }
+                        } while (opcionHamburguesa!=("Volver"));
+                        break;
                     }
                     case 1 -> {//pizzas
 
@@ -57,25 +66,19 @@ public class MenusDeOpciones {
                 }
         }while(opcion!=3);
 
-        return opcion;
+        return productoElegido;
     }
     
-    public static int selectorHamburguesas(){
-        int idProducto=0;
+    public static Object selectorHamburguesas(){
         Object seleccion = JOptionPane.showInputDialog(
                 null,
                 "Seleccione una Hamburguesa",
                 "Hamburguesas",
                 JOptionPane.QUESTION_MESSAGE,
                 null, // null para icono defecto
-                new Object[]{"Hamburguesa simple", "Hamburguesa queso",},
+                new Object[]{"Hamburguesa simple", "Hamburguesa queso","Volver"},
                 null);
-        if (seleccion.equals(1)) {
-            idProducto=1;
-        } else {
-            idProducto=2;
-        }
-        return idProducto;
+        return seleccion;
     }
     
         public static int selectorBebidas(){
