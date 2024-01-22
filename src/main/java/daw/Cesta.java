@@ -4,10 +4,18 @@ import java.util.ArrayList;
 
 public class Cesta {
 
-    ArrayList <Productos> cesta = new ArrayList<>();
+    ArrayList<Productos> cesta = new ArrayList<>();
 
     public void guardarElemento(Productos p1) {
         cesta.add(p1);
+    }
+
+    public double precioTotal() {
+        double precioTotal = 0;
+        for (int i = 0; i < cesta.size(); i++) {
+            precioTotal = +cesta.get(i).getPrecio();
+        }
+        return precioTotal;
     }
 
     @Override
@@ -18,6 +26,5 @@ public class Cesta {
         sb.append('}');
         return sb.toString();
     }
-    
-    
+
 }
