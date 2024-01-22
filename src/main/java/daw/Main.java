@@ -80,9 +80,12 @@ public class Main {
             productos.add(manzana);
             productos.add(yogurCoco);
             productos.add(yogurFresa);
+
         /*Creamos tpv*/
         Tpv tpv =new Tpv("Estepona");
         tpv.encenderTPV();
                 
+
+      
     }
 }
