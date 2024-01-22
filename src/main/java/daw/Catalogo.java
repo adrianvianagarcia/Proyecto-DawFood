@@ -16,6 +16,9 @@ public class Catalogo {
         ordenarPorId();
         catalogo.remove(id);
     }
-
+    
+    public void guardarElemento(Productos p1) {
+        catalogo.add(p1);
+    }
 
 }
