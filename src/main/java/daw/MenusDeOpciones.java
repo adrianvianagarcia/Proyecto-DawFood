@@ -38,8 +38,8 @@ public class MenusDeOpciones {
         return opcion;
     }
     
-    public int selectorHamburguesas(ArrayList cesta){
-        int idProducto;
+    public int selectorHamburguesas(){
+        int idProducto=0;
         Object seleccion = JOptionPane.showInputDialog(
                 null,
                 "Seleccione una Hamburguesa",
@@ -49,13 +49,11 @@ public class MenusDeOpciones {
                 new Object[]{"Hamburguesa simple", "Hamburguesa queso",},
                 null);
         if (seleccion.equals(1)) {
-            Productos hamburguesaSimple = new Productos(TipoProducto.COMIDA, Consumibles.HAMBURGUESA,
-                    3.5, "Hamburguesa simple", 1, 0.1);
-            cesta.add(hamburguesaSimple);
+            idProducto=1;
         } else {
-            JOptionPane.showMessageDialog(null, "Su eleccion es" + seleccion);
+            idProducto=2;
         }
-        return 0;
+        return idProducto;
     }
     
         public int selectorBebidas(){

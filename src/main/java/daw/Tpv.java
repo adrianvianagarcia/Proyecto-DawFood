@@ -44,10 +44,16 @@ public class Tpv {
     }
     
     public void encenderTPV() throws InterruptedException{
-    Object user=MenusDeOpciones.selectorDeUsuarios();
+    Object user;
     do{
+        user=user=MenusDeOpciones.selectorDeUsuarios();
         if (user.equals("Cliente")) {
-
+           int opcionMenu= MenusDeOpciones.selectorDeProducto();
+            switch(opcionMenu){
+                case 3->{
+                    break;
+                }
+            }
         } else if (user.equals("Administrador")) {
 
         } else {
