@@ -98,20 +98,20 @@ public class MenusDeOpciones {
         int opcion;
         Object productoElegido = "Volver";
         do {
-            opcion = JOptionPane.showOptionDialog(null, "¿Qué desea comer?",
-                    "Selector comida", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
+            opcion = JOptionPane.showOptionDialog(null, "¿Qué desea beber?",
+                    "Selector bebidas", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
                     null,
-                    new Object[]{"Refresco", "Cervezas", "Agua", "Volver"}, null);
+                    new Object[]{"Refrescos", "Cervezas", "Agua", "Volver"}, null);
             switch (opcion) {
-                case 0 -> {//hamburguesas
+                case 0 -> {//Refrescos
                     Object opcionRefresco;
                     do {
-                        opcionRefresco = selectorHamburguesas();
-                        if (opcionRefresco.equals("Hamburguesa simple")) {
+                        opcionRefresco = selectorBebidas();
+                        if (opcionRefresco.equals("Coca-Cola")) {
                             productoElegido = opcionRefresco;
                             opcion = 3;
                             break;
-                        } else if (opcionRefresco.equals("Hamburguesa queso")) {
+                        } else if (opcionRefresco.equals("Fanta de Naranja")) {
                             productoElegido = opcionRefresco;
                             opcion = 3;
                             break;
@@ -122,12 +122,12 @@ public class MenusDeOpciones {
                 case 1 -> {//pizzas
                     Object opcionCerveza;
                     do {
-                        opcionCerveza = selectorHamburguesas();
-                        if (opcionCerveza.equals("Pizza margarita")) {
+                        opcionCerveza = selectorCervezas();
+                        if (opcionCerveza.equals("Cerveza Mahou")) {
                             productoElegido = opcionCerveza;
                             opcion = 3;
                             break;
-                        } else if (opcionCerveza.equals("Pizza queso")) {
+                        } else if (opcionCerveza.equals("Cerveza Heineken")) {
                             productoElegido = opcionCerveza;
                             opcion = 3;
                             break;
@@ -137,7 +137,8 @@ public class MenusDeOpciones {
                 case 2 -> {//kebabs
                     Object opcionAgua;
                     do {
-                        opcionAgua = selectorHamburguesas();
+                        opcionAgua = selectorAguas();
+                        productoElegido=opcionAgua;
                         opcion=3;
                     } while (opcionAgua != ("Volver"));
                 }
@@ -153,56 +154,56 @@ public static Object selectorPostres(){//devuelve directamente el id del product
         int opcion;
         Object productoElegido="Volver";
         do{
-            opcion = JOptionPane.showOptionDialog(null, "¿Qué desea beber?",
-                    "Selector bebidas", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
+            opcion = JOptionPane.showOptionDialog(null, "¿Qué desea tomar de postre?",
+                    "Selector postre", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
                     null,
-                    new Object[]{"Refrescos", "Cervezas", "Agua", "Volver"}, null);
+                    new Object[]{"Frutas", "Bolleria", "Yogures", "Volver"}, null);
                 switch (opcion) {
-                    case 0 -> {//hamburguesas
-                        Object opcionRefresco;
+                    case 0 -> {//frutas
+                        Object opcionFruta;
                         do {
-                            opcionRefresco = selectorHamburguesas();
-                            if(opcionRefresco.equals("Hamburguesa simple")){
-                                productoElegido=opcionRefresco;
+                            opcionFruta = selectorFruta();
+                            if(opcionFruta.equals("Platano")){
+                                productoElegido=opcionFruta;
                                 opcion=3;
                                 break;
-                            }else if(opcionRefresco.equals("Hamburguesa queso")){
-                                productoElegido=opcionRefresco;
+                            }else if(opcionFruta.equals("Manzana")){
+                                productoElegido=opcionFruta;
                                 opcion=3;
                                 break;
                             }
-                        } while (opcionRefresco!=("Volver"));
+                        } while (opcionFruta!=("Volver"));
                         break;
                     }
-                    case 1 -> {//pizzas
-                        Object opcionPizza;
+                    case 1 -> {//bolleria
+                        Object opcionPostre;
                         do {
-                            opcionPizza = selectorPizzas();
-                            if (opcionPizza.equals("Pizza margarita")) {
-                                productoElegido = opcionPizza;
+                            opcionPostre = selectorBolleria();
+                            if (opcionPostre.equals("Tarta de Queso")) {
+                                productoElegido = opcionPostre;
                                 opcion = 3;
                                 break;
-                            } else if (opcionPizza.equals("Pizza queso")) {
-                                productoElegido = opcionPizza;
+                            } else if (opcionPostre.equals("Donut Glasé")) {
+                                productoElegido = opcionPostre;
                                 opcion = 3;
                                 break;
                             }
-                        } while (opcionPizza != ("Volver"));
+                        } while (opcionPostre != ("Volver"));
                     }
-                    case 2 -> {//kebabs
-                        Object opcionKebab;
+                    case 2 -> {//Yogures
+                        Object opcionYogures;
                         do {
-                            opcionKebab = selectorKebab();
-                            if (opcionKebab.equals("Kebab simple")) {
-                                productoElegido = opcionKebab;
+                            opcionYogures = selectorKebab();
+                            if (opcionYogures.equals("Yogur de coco")) {
+                                productoElegido = opcionYogures;
                                 opcion = 3;
                                 break;
-                            } else if (opcionKebab.equals("Taco frances")) {
-                                productoElegido = opcionKebab;
+                            } else if (opcionYogures.equals("Yogur de fresa")) {
+                                productoElegido = opcionYogures;
                                 opcion = 3;
                                 break;
                             }
-                        } while (opcionKebab != ("Volver"));
+                        } while (opcionYogures != ("Volver"));
                     }
                     case 3 -> {//volver
                         break;
@@ -275,6 +276,44 @@ public static Object selectorPostres(){//devuelve directamente el id del product
                 JOptionPane.QUESTION_MESSAGE,
                 null, // null para icono defecto
                 new Object[]{"Agua","Volver"},
+                null);
+        return seleccion;
+    }
+        
+        public static Object selectorFruta() {
+        Object seleccion = JOptionPane.showInputDialog(
+                null,
+                "Seleccione una Fruta",
+                "Aguas",
+                JOptionPane.QUESTION_MESSAGE,
+                null, // null para icono defecto
+                new Object[]{"Platano","Manzana", "Volver"},
+                null);
+        return seleccion;
+        
+        
+    }
+        
+        public static Object selectorBolleria() {
+        Object seleccion = JOptionPane.showInputDialog(
+                null,
+                "Seleccione uno de nuestros dulces",
+                "Bollería",
+                JOptionPane.QUESTION_MESSAGE,
+                null, // null para icono defecto
+                new Object[]{"Tarta de queso","Donut Glasé", "Volver"},
+                null);
+        return seleccion;
+    }
+        
+        public static Object selectorYogur() {
+        Object seleccion = JOptionPane.showInputDialog(
+                null,
+                "Seleccione un Yogurt",
+                "Yogures",
+                JOptionPane.QUESTION_MESSAGE,
+                null, // null para icono defecto
+                new Object[]{"Yogur de fresa","Yogur de coco", "Volver"},
                 null);
         return seleccion;
     }

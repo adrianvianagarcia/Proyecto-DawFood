@@ -118,55 +118,93 @@ public class Tpv {
         catalogo.guardarElemento(manzana);
         catalogo.guardarElemento(yogurCoco);
         catalogo.guardarElemento(yogurFresa);
-        
-        
+
         Cesta cesta = new Cesta();
- Object user;
+        Object user;
         do {
             user = MenusDeOpciones.selectorDeUsuarios();
             if (user.equals("Cliente")) {
                 int opcionMenu;
-                do{
+                do {
                     opcionMenu = MenusDeOpciones.selectorDeProducto();
                     switch (opcionMenu) {
                         case 0 -> {//comida
                             //hamburguesas
-                            Object productoElegido=MenusDeOpciones.selectorComidas();
-                            if(productoElegido.equals("Hamburguesa simple")){
+                            Object productoElegido = MenusDeOpciones.selectorComidas();
+                            if (productoElegido.equals("Hamburguesa simple")) {
                                 cesta.guardarElemento(hamburguesaSimple);
                                 System.out.println(cesta);
-                            }else if(productoElegido.equals("Hamburguesa queso")){
+                            } else if (productoElegido.equals("Hamburguesa queso")) {
                                 cesta.guardarElemento(hamburguesaQueso);
                                 System.out.println(cesta);
-                            //kebabs
-                            }else if (productoElegido.equals("Kebab simple")) {
+                                //kebabs
+                            } else if (productoElegido.equals("Kebab simple")) {
                                 cesta.guardarElemento(kebabSimple);
                                 System.out.println(cesta);
-                            }else if (productoElegido.equals("Taco frances")) {
+                            } else if (productoElegido.equals("Taco frances")) {
                                 cesta.guardarElemento(tacoFrances);
                                 System.out.println(cesta);
-                            //Pizzas
-                            }else if (productoElegido.equals("Pizza margarita")) {
+                                //Pizzas
+                            } else if (productoElegido.equals("Pizza margarita")) {
                                 cesta.guardarElemento(pizzaMargarita);
                                 System.out.println(cesta);
-                            }else if (productoElegido.equals("Pizza de queso")) {
+                            } else if (productoElegido.equals("Pizza de queso")) {
                                 cesta.guardarElemento(pizzaQueso);
                                 System.out.println(cesta);
                             }
                         }
 
-                        case 1 -> {
-
+                        case 1 -> {//bebidas
+                            Object productoElegido = MenusDeOpciones.selectorBebidas();
+                            if (productoElegido.equals("Coca-Cola")) {
+                                cesta.guardarElemento(cocaCola);
+                                System.out.println(cesta);
+                            } else if (productoElegido.equals("Fanta de Naranja")) {
+                                cesta.guardarElemento(fantaNaranja);
+                                System.out.println(cesta);
+                                //kebabs
+                            } else if (productoElegido.equals("Cerveza Mahou")) {
+                                cesta.guardarElemento(cervezaMahou);
+                                System.out.println(cesta);
+                            } else if (productoElegido.equals("Cerveza Heineken")) {
+                                cesta.guardarElemento(cervezaHeineken);
+                                System.out.println(cesta);
+                                //Pizzas
+                            } else if (productoElegido.equals("Agua")) {
+                                cesta.guardarElemento(agua);
+                                System.out.println(cesta);
+                            }
                         }
 
-                        case 2 -> {
-
+                        case 2 -> {//postres
+                            Object productoElegido = MenusDeOpciones.selectorPostres();
+                            if (productoElegido.equals("Platano")) {
+                                cesta.guardarElemento(platano);
+                                System.out.println(cesta);
+                            } else if (productoElegido.equals("Manzana")) {
+                                cesta.guardarElemento(manzana);
+                                System.out.println(cesta);
+                                //kebabs
+                            } else if (productoElegido.equals("Tarta de Queso")) {
+                                cesta.guardarElemento(tartaQueso);
+                                System.out.println(cesta);
+                            } else if (productoElegido.equals("Donut Glasé")) {
+                                cesta.guardarElemento(donut);
+                                System.out.println(cesta);
+                                //Pizzas
+                            } else if (productoElegido.equals("Yogur de coco")) {
+                                cesta.guardarElemento(yogurCoco);
+                                System.out.println(cesta);
+                            } else if (productoElegido.equals("Yogur de fresa")) {
+                                cesta.guardarElemento(yogurFresa);
+                                System.out.println(cesta);
+                            }
                         }
                         case 3 -> {
                             break;
                         }
                     }
-                }while(opcionMenu!=3);
+                } while (opcionMenu != 3);
             } else if (user.equals("Administrador")) {
 
             } else {
