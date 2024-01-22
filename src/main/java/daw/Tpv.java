@@ -39,31 +39,64 @@ public class Tpv {
 
         String contraseña = caracter1 + caracter2 + caracter3 + caracterEspecial
                 + caracter5y6;
-        
+
         return contraseña;
     }
-    
-    public void encenderTPV() throws InterruptedException{
-    Object user;
-    do{
-        user=user=MenusDeOpciones.selectorDeUsuarios();
-        if (user.equals("Cliente")) {
-           int opcionMenu= MenusDeOpciones.selectorDeProducto();
-            switch(opcionMenu){
-                case 3->{
-                    break;
+
+    public void encenderTPV() throws InterruptedException {
+        
+        Object user;
+        do {
+            user = MenusDeOpciones.selectorDeUsuarios();
+            if (user.equals("Cliente")) {
+                int opcionMenu = MenusDeOpciones.selectorDeProducto();
+                switch (opcionMenu) {
+                    case 0 -> {//comida
+                        int opcionTipoProducto;
+                        do{
+                           opcionTipoProducto =MenusDeOpciones.selectorComidas();
+                           switch(opcionTipoProducto){
+                               case 0->{//hamburguesas
+                                   int opcionHamburguesa;
+                                   do{
+                                       opcionHamburguesa=MenusDeOpciones.selectorHamburguesas();
+                                   }while(opcionHamburguesa!=2);
+                               }
+                               case 1 -> {//pizzas
+
+                               }
+                               case 2 -> {//kebabs
+
+                               }
+                               case 3 -> {//volver
+                                   break;
+                               }
+                           }
+                        }while(opcionTipoProducto!=3);
+                    }
+
+                    case 1 -> {
+
+                    }
+
+                    case 2 -> {
+
+                    }
+                    case 3 -> {
+                        break;
+                    }
                 }
+            } else if (user.equals("Administrador")) {
+
+            } else {
+                apagarTVP();
             }
-        } else if (user.equals("Administrador")) {
+        } while (user != "Apagar TPV");
 
-        } else {
-            apagarTVP();
-        } 
-    }while(user!="Apagar TPV");
+    }
 
-}
-    public void apagarTVP() throws InterruptedException{
-        JOptionPane.showMessageDialog(null,"Se apagará el TPV");
+    public void apagarTVP() throws InterruptedException {
+        JOptionPane.showMessageDialog(null, "Se apagará el TPV");
     }
 
     @Override
@@ -77,6 +110,5 @@ public class Tpv {
         sb.append('}');
         return sb.toString();
     }
-    
-    
+
 }
