@@ -121,47 +121,33 @@ public class Tpv {
         
         
         Cesta cesta = new Cesta();
-        Object user;
+ Object user;
         do {
             user = MenusDeOpciones.selectorDeUsuarios();
             if (user.equals("Cliente")) {
-                int opcionMenu = MenusDeOpciones.selectorDeProducto();
-                switch (opcionMenu) {
-                    case 0 -> {//comida
-                        int opcionTipoProducto;
-                        do {
-                            opcionTipoProducto = MenusDeOpciones.selectorComidas();
-                            switch (opcionTipoProducto) {
-                                case 0 -> {//hamburguesas
-                                    int opcionHamburguesa;
-                                    do {
-                                        opcionHamburguesa = MenusDeOpciones.selectorHamburguesas();
-                                    } while (opcionHamburguesa != 2);
-                                }
-                                case 1 -> {//pizzas
+                int opcionMenu;
+                do{
+                    opcionMenu = MenusDeOpciones.selectorDeProducto();
+                    switch (opcionMenu) {
+                        case 0 -> {//comida
+                            int opcionTipoProducto;
+                            do {
+                                opcionTipoProducto = MenusDeOpciones.selectorComidas();
+                            } while (opcionTipoProducto != 3);
+                        }
 
-                                }
-                                case 2 -> {//kebabs
+                        case 1 -> {
 
-                                }
-                                case 3 -> {//volver
-                                    break;
-                                }
-                            }
-                        } while (opcionTipoProducto != 3);
+                        }
+
+                        case 2 -> {
+
+                        }
+                        case 3 -> {
+                            break;
+                        }
                     }
-
-                    case 1 -> {
-
-                    }
-
-                    case 2 -> {
-
-                    }
-                    case 3 -> {
-                        break;
-                    }
-                }
+                }while(opcionMenu!=3);
             } else if (user.equals("Administrador")) {
 
             } else {

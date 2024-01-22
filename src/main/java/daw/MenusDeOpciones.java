@@ -30,11 +30,33 @@ public class MenusDeOpciones {
                 new Object[]{"Comida", "Bebida", "Postre", "Volver"}, null);
         return opcion;
         }
+    //COMIDAS
     public static int selectorComidas(){
-        int opcion = JOptionPane.showOptionDialog(null, "¿Qué desea comer?",
-                "Selector comida", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
-                null,
-                new Object[]{"Hamburguesa", "Kebab", "Pizza", "Volver"}, null);
+        int opcion;
+        do{
+            opcion = JOptionPane.showOptionDialog(null, "¿Qué desea comer?",
+                    "Selector comida", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    new Object[]{"Hamburguesa", "Kebab", "Pizza", "Volver"}, null);
+                switch (opcion) {
+                    case 0 -> {//hamburguesas
+                        int opcionHamburguesa;
+                        do {
+                            opcionHamburguesa = selectorHamburguesas();
+                        } while (opcionHamburguesa != 2);
+                    }
+                    case 1 -> {//pizzas
+
+                    }
+                    case 2 -> {//kebabs
+
+                    }
+                    case 3 -> {//volver
+                        break;
+                    }
+                }
+        }while(opcion!=3);
+
         return opcion;
     }
     
