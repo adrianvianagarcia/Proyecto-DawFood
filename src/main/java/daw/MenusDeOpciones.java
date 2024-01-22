@@ -38,7 +38,7 @@ public class MenusDeOpciones {
             opcion = JOptionPane.showOptionDialog(null, "¿Qué desea comer?",
                     "Selector comida", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
                     null,
-                    new Object[]{"Hamburguesa", "Kebab", "Pizza", "Volver"}, null);
+                    new Object[]{"Hamburguesa", "Pizza", "Kebab", "Volver"}, null);
                 switch (opcion) {
                     case 0 -> {//hamburguesas
                         Object opcionHamburguesa;
@@ -60,11 +60,11 @@ public class MenusDeOpciones {
                         Object opcionPizza;
                         do {
                             opcionPizza = selectorPizzas();
-                            if (opcionPizza.equals("Pizza margarita")) {
+                            if (opcionPizza.equals("Pizza Margarita")) {
                                 productoElegido = opcionPizza;
                                 opcion = 3;
                                 break;
-                            } else if (opcionPizza.equals("Pizza queso")) {
+                            } else if (opcionPizza.equals("Pizza de queso")) {
                                 productoElegido = opcionPizza;
                                 opcion = 3;
                                 break;
@@ -106,7 +106,7 @@ public class MenusDeOpciones {
                 case 0 -> {//Refrescos
                     Object opcionRefresco;
                     do {
-                        opcionRefresco = selectorBebidas();
+                        opcionRefresco = selectorRefrescos();
                         if (opcionRefresco.equals("Coca-Cola")) {
                             productoElegido = opcionRefresco;
                             opcion = 3;
@@ -119,7 +119,7 @@ public class MenusDeOpciones {
                     } while (opcionRefresco != ("Volver"));
                     break;
                 }
-                case 1 -> {//pizzas
+                case 1 -> {//Cervezas
                     Object opcionCerveza;
                     do {
                         opcionCerveza = selectorCervezas();
@@ -134,7 +134,7 @@ public class MenusDeOpciones {
                         }
                     } while (opcionCerveza != ("Volver"));
                 }
-                case 2 -> {//kebabs
+                case 2 -> {//Agua
                     Object opcionAgua;
                     do {
                         opcionAgua = selectorAguas();

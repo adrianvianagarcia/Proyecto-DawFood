@@ -137,7 +137,7 @@ public class Tpv {
                             } else if (productoElegido.equals("Hamburguesa queso")) {
                                 cesta.guardarElemento(hamburguesaQueso);
                                 System.out.println(cesta);
-                                //kebabs
+                                //kebabs 
                             } else if (productoElegido.equals("Kebab simple")) {
                                 cesta.guardarElemento(kebabSimple);
                                 System.out.println(cesta);
@@ -145,7 +145,7 @@ public class Tpv {
                                 cesta.guardarElemento(tacoFrances);
                                 System.out.println(cesta);
                                 //Pizzas
-                            } else if (productoElegido.equals("Pizza margarita")) {
+                            } else if (productoElegido.equals("Pizza Margarita")) {
                                 cesta.guardarElemento(pizzaMargarita);
                                 System.out.println(cesta);
                             } else if (productoElegido.equals("Pizza de queso")) {
