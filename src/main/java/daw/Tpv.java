@@ -53,7 +53,7 @@ public class Tpv {
                 4, "Hamburguesa con queso", 2, 0.1);
 
         Productos kebabSimple = new Productos(TipoProducto.COMIDA, Consumibles.KEBAB,
-                4, "Hamburguesa simple", 3, 0.1);
+                4, "Kebab simple", 3, 0.1);
 
         Productos tacoFrances = new Productos(TipoProducto.COMIDA, Consumibles.KEBAB,
                 4, "Taco frances", 4, 0.1);
@@ -130,9 +130,27 @@ public class Tpv {
                     opcionMenu = MenusDeOpciones.selectorDeProducto();
                     switch (opcionMenu) {
                         case 0 -> {//comida
+                            //hamburguesas
                             Object productoElegido=MenusDeOpciones.selectorComidas();
                             if(productoElegido.equals("Hamburguesa simple")){
                                 cesta.guardarElemento(hamburguesaSimple);
+                                System.out.println(cesta);
+                            }else if(productoElegido.equals("Hamburguesa queso")){
+                                cesta.guardarElemento(hamburguesaQueso);
+                                System.out.println(cesta);
+                            //kebabs
+                            }else if (productoElegido.equals("Kebab simple")) {
+                                cesta.guardarElemento(kebabSimple);
+                                System.out.println(cesta);
+                            }else if (productoElegido.equals("Taco frances")) {
+                                cesta.guardarElemento(tacoFrances);
+                                System.out.println(cesta);
+                            //Pizzas
+                            }else if (productoElegido.equals("Pizza margarita")) {
+                                cesta.guardarElemento(pizzaMargarita);
+                                System.out.println(cesta);
+                            }else if (productoElegido.equals("Pizza de queso")) {
+                                cesta.guardarElemento(pizzaQueso);
                                 System.out.println(cesta);
                             }
                         }
