@@ -32,6 +32,14 @@ public class MenusDeOpciones {
                 new Object[]{"Comida", "Bebida", "Postre","Carrito", "Volver"}, null);
         return opcion;
     }
+    
+    public static int selectorDeAtributo() {
+        int opcion = JOptionPane.showOptionDialog(null, "¿Qué atributo desea cambiar?",
+                "Selector opciones", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
+                null,
+                new Object[]{"Precio", "Descripcion", "Iva", "Volver"}, null);
+        return opcion;
+    }
 
     //COMIDAS
     public static Object selectorComidas() {//devuelve directamente el id del producto

@@ -13,7 +13,7 @@ public class Cesta {
     public double precioTotal() {
         double precioTotal = 0;
         for (int i = 0; i < cesta.size(); i++) {
-            precioTotal = +cesta.get(i).getPrecio();
+            precioTotal = +cesta.get(i).getPrecioBase();
         }
         return precioTotal;
     }

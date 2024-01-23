@@ -6,16 +6,18 @@ public class Productos {
 
     private TipoProducto tipo;
     private Consumibles consumible;
-    private double precio;
+    private double precioBase;
+    private double precioCantidad;
     private String descripcion;
     private int id;
     private double iva;
     private int cantidad;
 
-    public Productos(TipoProducto tipo, Consumibles consumible, double precio, String descripcion, int id, double iva, int cantidad) {
+    public Productos(TipoProducto tipo, Consumibles consumible, double precioBase, String descripcion, int id, double iva, int cantidad, double precioCantidad) {
         this.tipo = tipo;
         this.consumible = consumible;
-        this.precio = precio * cantidad;
+        this.precioBase = precioBase;
+        this.precioCantidad = precioBase * cantidad;
         this.descripcion = descripcion;
         this.id = id;
         this.iva = iva;
@@ -49,12 +51,12 @@ public class Productos {
         this.consumible = consumible;
     }
 
-    public double getPrecio() {
-        return precio;
+    public double getPrecioBase() {
+        return precioBase;
     }
 
-    public void setPrecio(double precio) {
-        this.precio = precio;
+    public void setPrecioBase(double precioBase) {
+        this.precioBase = precioBase;
     }
 
     public String getDescripcion() {
@@ -69,12 +71,28 @@ public class Productos {
         return id;
     }
 
+    public double getPrecioCantidad() {
+        return precioCantidad;
+    }
+
+    public void setPrecioCantidad(double precioCantidad) {
+        this.precioCantidad = precioCantidad;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
         hash = 23 * hash + Objects.hashCode(this.tipo);
         hash = 23 * hash + Objects.hashCode(this.consumible);
-        hash = 23 * hash + (int) (Double.doubleToLongBits(this.precio) ^ (Double.doubleToLongBits(this.precio) >>> 32));
+        hash = 23 * hash + (int) (Double.doubleToLongBits(this.precioBase) ^ (Double.doubleToLongBits(this.precioBase) >>> 32));
         hash = 23 * hash + Objects.hashCode(this.descripcion);
         hash = 23 * hash + this.id;
         hash = 23 * hash + (int) (Double.doubleToLongBits(this.iva) ^ (Double.doubleToLongBits(this.iva) >>> 32));
@@ -93,7 +111,7 @@ public class Productos {
             return false;
         }
         final Productos other = (Productos) obj;
-        if (Double.doubleToLongBits(this.precio) != Double.doubleToLongBits(other.precio)) {
+        if (Double.doubleToLongBits(this.precioBase) != Double.doubleToLongBits(other.precioBase)) {
             return false;
         }
         if (this.id != other.id) {
@@ -114,15 +132,14 @@ public class Productos {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Productos{");
-        sb.append("precio=").append(precio);
-        sb.append(", descripcion=").append(descripcion);
+        sb.append("Productos{ ");
+        sb.append("Descripcion= ").append(descripcion);
+        sb.append(", Precio individual= ").append(precioBase);
+        sb.append(", Precio por cantidad= ").append(precioCantidad);
         sb.append(", iva=").append(iva);
         sb.append(", cantidad=").append(cantidad);
         sb.append('}');
         return sb.toString();
     }
-
-    
 
 }

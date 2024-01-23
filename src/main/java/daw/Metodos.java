@@ -17,7 +17,7 @@ public class Metodos{
         for (int i = 0; i < lista.size(); i++) {/*Actualiza mi String y le añade
             todas las palabras en cada iteracion*/
             aux += ( lista.get(i).getDescripcion()
-                    +" "+lista.get(i).getPrecio()+("\n"));
+                    +" "+lista.get(i).getPrecioBase()+("\n"));
         }
         return aux;
     }

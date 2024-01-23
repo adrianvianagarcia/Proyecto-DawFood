@@ -32,5 +32,15 @@ public class Catalogo {
     public Consumibles obtenerClase(int pos){
         return catalogo.get(pos).getConsumible();
     }
+    
+    public static String mostrarProducto(Catalogo c1) {
+        String aux = "";
+        for (int i = 0; i < c1.tamañoCatalgo(); i++) {/*Actualiza mi String y le añade
+            todas las palabras en cada iteracion*/
+            aux += ( c1.posElemento(i).getDescripcion()
+                    +" "+c1.posElemento(i).getId()+("\n"));
+        }
+        return aux;
+    }
 
 }
