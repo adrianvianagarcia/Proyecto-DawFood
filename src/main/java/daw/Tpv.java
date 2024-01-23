@@ -104,6 +104,7 @@ public class Tpv {
 
         Productos yogurFresa = new Productos(TipoProducto.POSTRE, Consumibles.YOGURES,
                 1.25, "Yogur de fresa", 17, 0.1, 0);
+        
         /*Creo un arrayList de mis objectos*/
         Catalogo catalogo = new Catalogo();
         //comida
@@ -126,7 +127,6 @@ public class Tpv {
         catalogo.guardarElemento(manzana);
         catalogo.guardarElemento(yogurCoco);
         catalogo.guardarElemento(yogurFresa);
-
         Cesta cesta = new Cesta();
         Object user;
         do {
@@ -137,6 +137,11 @@ public class Tpv {
                     opcionMenu = MenusDeOpciones.selectorDeProducto();
                     switch (opcionMenu) {
                         case 0 -> {//comida
+                            for (int i = 0; i < catalogo.tamañoCatalgo(); i++) {
+                                if (catalogo.posElemento(i).getConsumible().equals(Consumibles.HAMBURGUESA)) {
+                                    System.out.println(catalogo.posElemento(i));
+                                }
+                            }
                             //hamburguesas
                             Object productoElegido = MenusDeOpciones.selectorComidas();
                             if (productoElegido.equals("Hamburguesa simple")) {
@@ -160,6 +165,7 @@ public class Tpv {
                                 cesta.guardarElemento(pizzaQueso);
                                 System.out.println(cesta);
                             }
+
                         }
 
                         case 1 -> {//bebidas

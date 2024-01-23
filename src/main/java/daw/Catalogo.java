@@ -20,5 +20,17 @@ public class Catalogo {
     public void guardarElemento(Productos p1) {
         catalogo.add(p1);
     }
+    
+    public int tamañoCatalgo(){
+        return catalogo.size();
+    }
+    
+    public Productos posElemento(int pos){
+        return catalogo.get(pos);
+    }
+    
+    public Consumibles obtenerClase(int pos){
+        return catalogo.get(pos).getConsumible();
+    }
 
 }

@@ -356,4 +356,5 @@ public class MenusDeOpciones {
                 new Object[]{"Cambiar producto", "Nuevo producto", "Borrar producto","Consultar ventas", "Volver"}, null);
         return opcion;
     }
+    
 }
