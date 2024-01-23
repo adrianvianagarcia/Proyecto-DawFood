@@ -3,6 +3,7 @@ package daw;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Ticket {
     
@@ -10,15 +11,20 @@ public class Ticket {
     int numeroPedido;
     double precioTotal;
     LocalDateTime fechaPedido;
-    Catalogo c1;
+    ArrayList <Productos> listaProductosComprados;
 
-    public Ticket(int id, int numeroPedido, double precioTotal, LocalDateTime fechaPedido, Catalogo c1) {
-        this.id = id;
+    public Ticket(int id, int numeroPedido, double precioTotal, LocalDateTime fechaPedido) {
+        Random r = new Random();
+        this.id = r.nextInt(id, id);
         this.numeroPedido = numeroPedido;
         this.precioTotal = precioTotal;
         this.fechaPedido = fechaPedido;
-        this.c1 = 
+        this.listaProductosComprados = listaProductosComprados = new ArrayList<>();
     }
+
+    
+
+    
     
     
     

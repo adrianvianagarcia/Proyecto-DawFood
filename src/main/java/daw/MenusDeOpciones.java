@@ -331,4 +331,12 @@ public class MenusDeOpciones {
                 null);
         return seleccion;
     }
+    
+    public static int selectorDeOpcionesAdmin() {
+        int opcion = JOptionPane.showOptionDialog(null, "¿Qué desea hacer?",
+                "Selector opciones", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
+                null,
+                new Object[]{"Cambiar producto", "Nuevo producto", "Borrar producto","Consultar ventas", "Volver"}, null);
+        return opcion;
+    }
 }
