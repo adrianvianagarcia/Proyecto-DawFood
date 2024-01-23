@@ -104,7 +104,7 @@ public class Tpv {
 
         Productos yogurFresa = new Productos(TipoProducto.POSTRE, Consumibles.YOGURES,
                 1.25, "Yogur de fresa", 17, 0.1, 0);
-        
+
         /*Creo un arrayList de mis objectos*/
         Catalogo catalogo = new Catalogo();
         //comida
@@ -137,11 +137,7 @@ public class Tpv {
                     opcionMenu = MenusDeOpciones.selectorDeProducto();
                     switch (opcionMenu) {
                         case 0 -> {//comida
-                            for (int i = 0; i < catalogo.tamañoCatalgo(); i++) {
-                                if (catalogo.posElemento(i).getConsumible().equals(Consumibles.HAMBURGUESA)) {
-                                    System.out.println(catalogo.posElemento(i));
-                                }
-                            }
+                            mostrarProductosPorCategoria(Consumibles.AGUA, catalogo);
                             //hamburguesas
                             Object productoElegido = MenusDeOpciones.selectorComidas();
                             if (productoElegido.equals("Hamburguesa simple")) {
@@ -215,7 +211,7 @@ public class Tpv {
                             }
                         }
                         case 3 -> {//carrito
-                            
+
                         }
                         case 4 -> {
                             break;
@@ -263,6 +259,15 @@ public class Tpv {
 
     public void apagarTVP() throws InterruptedException {
         JOptionPane.showMessageDialog(null, "Se apagará el TPV");
+    }
+
+    public void mostrarProductosPorCategoria(Consumibles c1, Catalogo catalogo) {
+        for (int i = 0; i < catalogo.tamañoCatalgo(); i++) {
+            if (catalogo.posElemento(i).getConsumible().equals(c1)) {
+                System.out.println(catalogo.posElemento(i));
+            }
+        }
+
     }
 
     @Override

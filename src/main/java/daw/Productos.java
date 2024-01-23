@@ -15,7 +15,7 @@ public class Productos {
     public Productos(TipoProducto tipo, Consumibles consumible, double precio, String descripcion, int id, double iva, int cantidad) {
         this.tipo = tipo;
         this.consumible = consumible;
-        this.precio += precio * cantidad;
+        this.precio = precio * cantidad;
         this.descripcion = descripcion;
         this.id = id;
         this.iva = iva;
