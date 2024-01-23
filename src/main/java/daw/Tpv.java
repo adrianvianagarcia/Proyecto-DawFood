@@ -137,81 +137,87 @@ public class Tpv {
                     opcionMenu = MenusDeOpciones.selectorDeProducto();
                     switch (opcionMenu) {
                         case 0 -> {//comida
-                            mostrarProductosPorCategoria(Consumibles.AGUA, catalogo);
                             //hamburguesas
-                            Object productoElegido = MenusDeOpciones.selectorComidas();
-                            if (productoElegido.equals("Hamburguesa simple")) {
-                                cesta.guardarElemento(hamburguesaSimple);
-                                System.out.println(cesta);
-                            } else if (productoElegido.equals("Hamburguesa queso")) {
-                                cesta.guardarElemento(hamburguesaQueso);
-                                System.out.println(cesta);
-                                //kebabs 
-                            } else if (productoElegido.equals("Kebab simple")) {
-                                cesta.guardarElemento(kebabSimple);
-                                System.out.println(cesta);
-                            } else if (productoElegido.equals("Taco frances")) {
-                                cesta.guardarElemento(tacoFrances);
-                                System.out.println(cesta);
-                                //Pizzas
-                            } else if (productoElegido.equals("Pizza Margarita")) {
-                                cesta.guardarElemento(pizzaMargarita);
-                                System.out.println(cesta);
-                            } else if (productoElegido.equals("Pizza de queso")) {
-                                cesta.guardarElemento(pizzaQueso);
-                                System.out.println(cesta);
-                            }
-
+                            int productoElegido = MenusDeOpciones.selectorComidas();
+                           switch(productoElegido){
+                               case 0 -> {//hamburguesas
+                                   String menuHamburguesa=mostrarProductosPorCategoria(Consumibles.HAMBURGUESA, catalogo);
+                                   JOptionPane.showInputDialog(menuHamburguesa);
+                               }
+                               case 1 -> {//Pizzas
+                                   String menuHamburguesa = mostrarProductosPorCategoria(Consumibles.PIZZA, catalogo);
+                                   JOptionPane.showInputDialog(menuHamburguesa);
+                               }
+                               case 2 -> {//kebabs
+                                   String menuHamburguesa = mostrarProductosPorCategoria(Consumibles.KEBAB, catalogo);
+                                   JOptionPane.showInputDialog(menuHamburguesa);
+                               }
+                               case 3 -> {//volver
+                                   break;
+                               }
+                           }
                         }
 
-                        case 1 -> {//bebidas
-                            Object productoElegido = MenusDeOpciones.selectorBebidas();
-                            if (productoElegido.equals("Coca-Cola")) {
-                                cesta.guardarElemento(cocaCola);
-                                System.out.println(cesta);
-                            } else if (productoElegido.equals("Fanta de Naranja")) {
-                                cesta.guardarElemento(fantaNaranja);
-                                System.out.println(cesta);
-                                //cervezas
-                            } else if (productoElegido.equals("Cerveza Mahou")) {
-                                cesta.guardarElemento(cervezaMahou);
-                                System.out.println(cesta);
-                            } else if (productoElegido.equals("Cerveza Heineken")) {
-                                cesta.guardarElemento(cervezaHeineken);
-                                System.out.println(cesta);
-                                //agua
-                            } else if (productoElegido.equals("Agua")) {
-                                cesta.guardarElemento(agua);
-                                System.out.println(agua.getPrecio());
+                        case 1 -> {//bebida
+                            int productoElegido = MenusDeOpciones.selectorBebidas();
+                            switch (productoElegido) {
+                                case 0 -> {//refrescos
+                                    String menuHamburguesa = mostrarProductosPorCategoria(Consumibles.REFRESCO, catalogo);
+                                    JOptionPane.showInputDialog(menuHamburguesa);
+                                }
+                                case 1 -> {//Cervezas
+                                    String menuHamburguesa = mostrarProductosPorCategoria(Consumibles.CERVEZA, catalogo);
+                                    JOptionPane.showInputDialog(menuHamburguesa);
+                                }
+                                case 2 -> {//Agua
+                                    String menuHamburguesa = mostrarProductosPorCategoria(Consumibles.AGUA, catalogo);
+                                    JOptionPane.showInputDialog(menuHamburguesa);
+                                }
+                                case 3 -> {//volver
+                                    break;
+                                }
                             }
                         }
 
                         case 2 -> {//postres
-                            Object productoElegido = MenusDeOpciones.selectorPostres();
-                            if (productoElegido.equals("Platano")) {
-                                cesta.guardarElemento(platano);
-                                System.out.println(cesta);
-                            } else if (productoElegido.equals("Manzana")) {
-                                cesta.guardarElemento(manzana);
-                                System.out.println(cesta);
-                                //bolleria
-                            } else if (productoElegido.equals("Tarta de Queso")) {
-                                cesta.guardarElemento(tartaQueso);
-                                System.out.println(cesta);
-                            } else if (productoElegido.equals("Donut Glasé")) {
-                                cesta.guardarElemento(donut);
-                                System.out.println(cesta);
-                                //yogur
-                            } else if (productoElegido.equals("Yogur de coco")) {
-                                cesta.guardarElemento(yogurCoco);
-                                System.out.println(cesta);
-                            } else if (productoElegido.equals("Yogur de fresa")) {
-                                cesta.guardarElemento(yogurFresa);
-                                System.out.println(cesta);
+                            int productoElegido = MenusDeOpciones.selectorComidas();
+                            switch (productoElegido) {
+                                case 0 -> {//frutas
+                                    String menuHamburguesa = mostrarProductosPorCategoria(Consumibles.FRUTA, catalogo);
+                                    JOptionPane.showInputDialog(menuHamburguesa);
+                                }
+                                case 1 -> {//bolleria
+                                    String menuHamburguesa = mostrarProductosPorCategoria(Consumibles.BOLLERIA, catalogo);
+                                    JOptionPane.showInputDialog(menuHamburguesa);
+                                }
+                                case 2 -> {//yogures
+                                    String menuHamburguesa = mostrarProductosPorCategoria(Consumibles.YOGURES, catalogo);
+                                    JOptionPane.showInputDialog(menuHamburguesa);
+                                }
+                                case 3 -> {//volver
+                                    break;
+                                }
                             }
                         }
                         case 3 -> {//carrito
+                            int opcionCarrito=MenusDeOpciones.selectorCarrito();
+                            switch(opcionCarrito){
+                                case 0 ->{
+                                    
+                                }
+                                case 1 -> {
 
+                                }
+                                case 2 -> {
+
+                                }
+                                case 3 -> {
+
+                                }
+                                case 4 -> {
+                                    break;
+                                }
+                            }
                         }
                         case 4 -> {
                             break;
@@ -261,14 +267,16 @@ public class Tpv {
         JOptionPane.showMessageDialog(null, "Se apagará el TPV");
     }
 
-    public void mostrarProductosPorCategoria(Consumibles c1, Catalogo catalogo) {
+    public String mostrarProductosPorCategoria(Consumibles c1, Catalogo catalogo) {
+        String aux = "";
         for (int i = 0; i < catalogo.tamañoCatalgo(); i++) {
             if (catalogo.posElemento(i).getConsumible().equals(c1)) {
-                System.out.println(catalogo.posElemento(i));
+                 aux +=(catalogo.posElemento(i)+("\n"));
             }
         }
-
+        return aux;
     }
+    
 
     @Override
     public String toString() {
