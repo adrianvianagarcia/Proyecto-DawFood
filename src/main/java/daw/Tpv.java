@@ -209,7 +209,7 @@ public class Tpv {
                             }
                         }
                         case 3 -> {//carrito
-                            cesta.cesta.forEach(System.out::println);
+                            
                         }
                         case 4 -> {
                             break;

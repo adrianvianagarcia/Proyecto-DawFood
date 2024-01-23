@@ -222,11 +222,21 @@ public class MenusDeOpciones {
 
         return productoElegido;
     }
+    
+    public static int selectorCarrito() {
+        int opcion = JOptionPane.showOptionDialog(null, "¿Qué desea ver?",
+                "Carrito", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
+                null,
+                new Object[]{"Ver productos en el carrito", "Eliminar producto", 
+                    "Pagar pedido","Cancelar pedido", "Volver"}, null);
+        return opcion;
+    }
 
     public static Object selectorHamburguesas() {
         Object seleccion = JOptionPane.showInputDialog(
                 null,
-                "Seleccione una Hamburguesa",
+                "Haurguesa simple -- 3.5€"+ ("\n")
+              + "Hamburguesa queso -- 4€",
                 "Hamburguesas",
                 JOptionPane.QUESTION_MESSAGE,
                 null, // null para icono defecto
@@ -238,7 +248,8 @@ public class MenusDeOpciones {
     public static Object selectorKebab() {
         Object seleccion = JOptionPane.showInputDialog(
                 null,
-                "Seleccione un Kebab",
+                "Kebab simple -- 4€"+("\n")
+                + "Taco frances -- 4€",
                 "Kebabs",
                 JOptionPane.QUESTION_MESSAGE,
                 null, // null para icono defecto
@@ -250,7 +261,8 @@ public class MenusDeOpciones {
     public static Object selectorPizzas() {
         Object seleccion = JOptionPane.showInputDialog(
                 null,
-                "Seleccione una Pizza",
+                "Pizza margarita -- 5€"+ ("\n")
+                + "Pizza de queso -- 4€",
                 "Pizzas",
                 JOptionPane.QUESTION_MESSAGE,
                 null, // null para icono defecto
@@ -262,7 +274,8 @@ public class MenusDeOpciones {
     public static Object selectorRefrescos() {
         Object seleccion = JOptionPane.showInputDialog(
                 null,
-                "Seleccione un Refresco",
+                "Coca-cola -- 2€"+ ("\n")
+                + "Fanta de naranja -- 2€",
                 "Refrescos",
                 JOptionPane.QUESTION_MESSAGE,
                 null, // null para icono defecto
@@ -274,7 +287,8 @@ public class MenusDeOpciones {
     public static Object selectorCervezas() {
         Object seleccion = JOptionPane.showInputDialog(
                 null,
-                "Seleccione una Cerveza",
+                "Mahou -- 2.5€"+ ("\n")
+                + "Heineken -- 2.5€",
                 "Cervezas",
                 JOptionPane.QUESTION_MESSAGE,
                 null, // null para icono defecto
@@ -286,7 +300,7 @@ public class MenusDeOpciones {
     public static Object selectorAguas() {
         Object seleccion = JOptionPane.showInputDialog(
                 null,
-                "Seleccione un Agua",
+                "Agua -- 1.5€",
                 "Aguas",
                 JOptionPane.QUESTION_MESSAGE,
                 null, // null para icono defecto
@@ -298,8 +312,9 @@ public class MenusDeOpciones {
     public static Object selectorFruta() {
         Object seleccion = JOptionPane.showInputDialog(
                 null,
-                "Seleccione una Fruta",
-                "Aguas",
+                "Platano -- 0.5€"+ ("\n")
+                + "Manzana -- 0.5€",
+                "Frutas",
                 JOptionPane.QUESTION_MESSAGE,
                 null, // null para icono defecto
                 new Object[]{"Platano", "Manzana", "Volver"},
@@ -311,7 +326,8 @@ public class MenusDeOpciones {
     public static Object selectorBolleria() {
         Object seleccion = JOptionPane.showInputDialog(
                 null,
-                "Seleccione uno de nuestros dulces",
+                "Tarta de queso -- 4€"+ ("\n")
+                + "DOnut glasé -- 3€",
                 "Bollería",
                 JOptionPane.QUESTION_MESSAGE,
                 null, // null para icono defecto
@@ -323,7 +339,8 @@ public class MenusDeOpciones {
     public static Object selectorYogur() {
         Object seleccion = JOptionPane.showInputDialog(
                 null,
-                "Seleccione un Yogurt",
+                "sabor coco -- 1.25€"+ ("\n")
+                + "sabor fresa -- 1.25€",
                 "Yogures",
                 JOptionPane.QUESTION_MESSAGE,
                 null, // null para icono defecto

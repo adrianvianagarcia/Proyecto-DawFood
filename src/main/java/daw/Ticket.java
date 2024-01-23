@@ -17,7 +17,6 @@ public class Ticket {
         this.numeroPedido = numeroPedido;
         this.precioTotal = precioTotal;
         this.fechaPedido = fechaPedido;
-        this.c1 = 
     }
     
     
