@@ -8,14 +8,14 @@ import java.util.Random;
 public class Ticket {
     
     int id;
-    int numeroPedido;
+    int numeroPedido = 1;
     double precioTotal;
     LocalDateTime fechaPedido;
     ArrayList <Productos> listaProductosComprados;
 
     public Ticket(int id, int numeroPedido, double precioTotal, LocalDateTime fechaPedido) {
         Random r = new Random();
-        this.id = r.nextInt(id, id);
+        this.id = id;
         this.numeroPedido = numeroPedido;
         this.precioTotal = precioTotal;
         this.fechaPedido = fechaPedido;
