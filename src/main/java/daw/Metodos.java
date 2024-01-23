@@ -12,11 +12,12 @@ import java.util.ArrayList;
  */
 public class Metodos{
     
-    public static String mostrarArrayList(ArrayList<Productos> lista) {
+    public static String mostrarProducto(ArrayList<Productos> lista) {
         String aux = "";
         for (int i = 0; i < lista.size(); i++) {/*Actualiza mi String y le añade
             todas las palabras en cada iteracion*/
-            aux += ("Posición " + i + " -- " + lista.get(i) + ("\n"));
+            aux += ( lista.get(i).getDescripcion()
+                    +" "+lista.get(i).getPrecio()+("\n"));
         }
         return aux;
     }

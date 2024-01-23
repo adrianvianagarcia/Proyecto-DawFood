@@ -10,19 +10,21 @@ public class Productos {
     private String descripcion;
     private int id;
     private double iva;
+    private int cantidad;
 
-    public Productos(TipoProducto tipo, Consumibles consumible, double precio, String descripcion, int id, double iva) {
+    public Productos(TipoProducto tipo, Consumibles consumible, double precio, String descripcion, int id, double iva, int cantidad) {
         this.tipo = tipo;
         this.consumible = consumible;
-        this.precio = precio;
+        this.precio = precio * cantidad;
         this.descripcion = descripcion;
         this.id = id;
         this.iva = iva;
+        this.cantidad = cantidad;
     }
 
     public Productos() {
     }
-    
+
     public double getIva() {
         return iva;
     }
@@ -113,29 +115,14 @@ public class Productos {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Productos{");
-        sb.append("tipo=").append(tipo);
-        sb.append(", consumible=").append(consumible);
-        sb.append(", precio=").append(precio);
+        sb.append("precio=").append(precio);
         sb.append(", descripcion=").append(descripcion);
-        sb.append(", id=").append(id);
         sb.append(", iva=").append(iva);
+        sb.append(", cantidad=").append(cantidad);
         sb.append('}');
         return sb.toString();
     }
-    
-//    /*Esto irá en una clase nueva llamada catalogos*/
-//    public void borrarProductoExistente(int id) {
-//        //Crear la clase catalogo que contenga todos los productos para asi poder
-//        //eliminarlos
-//        ArrayList<Productos> catalogo = new ArrayList<>();
-//        Productos hamburguesaSimple = new Productos(TipoProducto.COMIDA, Consumibles.HAMBURGUESA,
-//                3.5, "Hamburguesa simple", 1, 0.1);
-//        Productos hamburguesaQueso = new Productos(TipoProducto.COMIDA, Consumibles.HAMBURGUESA,
-//                4, "Hamburguesa con queso", 2, 0.1);
-//        //Crear metodos de ordenar la lista (ordenar por id, precio...)
-//        Collections.sort(catalogo, (l1, l2) -> Integer.compare(hamburguesaSimple.getId(), hamburguesaQueso.getId()));
-//        catalogo.remove(id);
-//    }
+
     
 
 }

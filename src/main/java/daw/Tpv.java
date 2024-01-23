@@ -46,7 +46,7 @@ public class Tpv {
 
     public boolean verifContraseña(String contraseñaUser, String contraseña) {
         boolean errorContra = true;
-        if (contraseñaUser == contraseña) {
+        if (contraseñaUser.equalsIgnoreCase(contraseña)) {
             errorContra = false;
         }
         return errorContra;
@@ -55,55 +55,55 @@ public class Tpv {
     public void encenderTPV() throws InterruptedException {
         //Creamos todos los productos
         Productos hamburguesaSimple = new Productos(TipoProducto.COMIDA, Consumibles.HAMBURGUESA,
-                3.5, "Hamburguesa simple", 1, 0.1);
+                3.5, "Hamburguesa simple", 1, 0.1, 0);
 
         Productos hamburguesaQueso = new Productos(TipoProducto.COMIDA, Consumibles.HAMBURGUESA,
-                4, "Hamburguesa con queso", 2, 0.1);
+                4, "Hamburguesa con queso", 2, 0.1, 0);
 
         Productos kebabSimple = new Productos(TipoProducto.COMIDA, Consumibles.KEBAB,
-                4, "Kebab simple", 3, 0.1);
+                4, "Kebab simple", 3, 0.1, 0);
 
         Productos tacoFrances = new Productos(TipoProducto.COMIDA, Consumibles.KEBAB,
-                4, "Taco frances", 4, 0.1);
+                4, "Taco frances", 4, 0.1, 0);
 
         Productos pizzaMargarita = new Productos(TipoProducto.COMIDA, Consumibles.PIZZA,
-                5, "Pizza margarita", 5, 0.1);
+                5, "Pizza margarita", 5, 0.1, 0);
 
         Productos pizzaQueso = new Productos(TipoProducto.COMIDA, Consumibles.PIZZA,
-                4, "Pizza de queso", 6, 0.1);
+                4, "Pizza de queso", 6, 0.1, 0);
 
         Productos cocaCola = new Productos(TipoProducto.BEBIDA, Consumibles.REFRESCO,
-                2, "Coca-Cola", 7, 0.21);
+                2, "Coca-Cola", 7, 0.21, 0);
 
         Productos fantaNaranja = new Productos(TipoProducto.BEBIDA, Consumibles.REFRESCO,
-                2, "Fanta de Naranja", 8, 0.21);
+                2, "Fanta de Naranja", 8, 0.21, 0);
 
         Productos cervezaMahou = new Productos(TipoProducto.BEBIDA, Consumibles.CERVEZA,
-                2.5, "Cerveza Mahou", 9, 0.21);
+                2.5, "Cerveza Mahou", 9, 0.21, 0);
 
         Productos cervezaHeineken = new Productos(TipoProducto.BEBIDA, Consumibles.CERVEZA,
-                2.5, "Cerveza Heineken", 10, 0.21);
+                2.5, "Cerveza Heineken", 10, 0.21, 0);
 
         Productos agua = new Productos(TipoProducto.BEBIDA, Consumibles.AGUA,
-                1.5, "Agua", 11, 0.1);
+                1.5, "Agua", 11, 0.1, 0);
 
         Productos tartaQueso = new Productos(TipoProducto.POSTRE, Consumibles.BOLLERIA,
-                4, "Tarta de Queso", 12, 0.1);
+                4, "Tarta de Queso", 12, 0.1, 0);
 
         Productos donut = new Productos(TipoProducto.POSTRE, Consumibles.BOLLERIA,
-                3, "Donut Glasé", 13, 0.1);
+                3, "Donut Glasé", 13, 0.1, 0);
 
         Productos platano = new Productos(TipoProducto.POSTRE, Consumibles.FRUTA,
-                0.5, "Platano", 14, 0.1);
+                0.5, "Platano", 14, 0.1, 0);
 
         Productos manzana = new Productos(TipoProducto.POSTRE, Consumibles.FRUTA,
-                0.5, "Manzana", 15, 0.1);
+                0.5, "Manzana", 15, 0.1, 0);
 
         Productos yogurCoco = new Productos(TipoProducto.POSTRE, Consumibles.YOGURES,
-                1.25, "Yogur de coco", 16, 0.1);
+                1.25, "Yogur de coco", 16, 0.1, 0);
 
         Productos yogurFresa = new Productos(TipoProducto.POSTRE, Consumibles.YOGURES,
-                1.25, "Yogur de fresa", 17, 0.1);
+                1.25, "Yogur de fresa", 17, 0.1, 0);
         /*Creo un arrayList de mis objectos*/
         Catalogo catalogo = new Catalogo();
         //comida
@@ -216,14 +216,38 @@ public class Tpv {
                         }
                     }
                 } while (opcionMenu != 4);
+
             } else if (user.equals("Administrador")) {
                 String contraseña = generarContraseña();
-                System.out.println(contraseña);
-                 String contraseñaUser;
+                System.out.println("La contraseña del TPV es: " + contraseña);
+                String contraseñaUser;
                 do {
                     contraseñaUser = JOptionPane.showInputDialog(null,
                             "Introduce la contraseña del TPV: ");
-                } while (verifContraseña(contraseñaUser, contraseña)==true);
+                } while (verifContraseña(contraseñaUser, contraseña) == true);
+                int opcionMenu;
+                do {
+                    opcionMenu = MenusDeOpciones.selectorDeOpcionesAdmin();
+                    switch (opcionMenu) {
+                        case 0 -> {//cambiarProducto
+
+                        }
+
+                        case 1 -> {//cambiarProducto
+
+                        }
+                        case 2 -> {//cambiarProducto
+
+                        }
+                        case 3 -> {//cambiarProducto
+
+                        }
+                        case 4 -> {//cambiarProducto
+                            break;
+                        }
+
+                    }
+                } while (opcionMenu != 4);
             } else {
                 apagarTVP();
             }
