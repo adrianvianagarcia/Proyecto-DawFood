@@ -33,6 +33,14 @@ public class MenusDeOpciones {
         return opcion;
     }
     
+    public static int selectorDeProductoAdmin() {
+        int opcion = JOptionPane.showOptionDialog(null, "Seleccione el tipo de producto",
+                "Selector opciones", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
+                null,
+                new Object[]{"Comida", "Bebida", "Postre", "Volver"}, null);
+        return opcion;
+    }
+    
     public static int selectorDeAtributo() {
         int opcion = JOptionPane.showOptionDialog(null, "¿Qué atributo desea cambiar?",
                 "Selector opciones", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
@@ -50,6 +58,15 @@ public class MenusDeOpciones {
                     new Object[]{"Hamburguesa", "Pizza", "Kebab", "Volver"}, null);
         return opcion;
     }
+    
+    public static int selectorComidasAdmin() {//devuelve directamente el id del producto
+        int opcion;
+            opcion = JOptionPane.showOptionDialog(null, "Seleccione el producto",
+                    "Selector comida", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    new Object[]{"Hamburguesa", "Pizza", "Kebab", "Volver"}, null);
+        return opcion;
+    }
 
     public static int selectorBebidas() {//devuelve directamente el id del producto
         int opcion;
@@ -59,10 +76,28 @@ public class MenusDeOpciones {
                     new Object[]{"Refrescos", "Cervezas", "Agua", "Volver"}, null);
         return opcion;
     }
+    
+    public static int selectorBebidasAdmin() {//devuelve directamente el id del producto
+        int opcion;
+            opcion = JOptionPane.showOptionDialog(null, "Seleccione el producto",
+                    "Selector bebidas", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    new Object[]{"Refrescos", "Cervezas", "Agua", "Volver"}, null);
+        return opcion;
+    }
 
-    public static Object selectorPostres() {//devuelve directamente el id del producto
+    public static int selectorPostres() {//devuelve directamente el id del producto
         int opcion;
             opcion = JOptionPane.showOptionDialog(null, "¿Qué desea tomar de postre?",
+                    "Selector postre", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    new Object[]{"Frutas", "Bolleria", "Yogures", "Volver"}, null);
+        return opcion;
+    }
+    
+    public static int selectorPostresAdmin() {//devuelve directamente el id del producto
+        int opcion;
+            opcion = JOptionPane.showOptionDialog(null, "Seleccione el producto",
                     "Selector postre", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
                     null,
                     new Object[]{"Frutas", "Bolleria", "Yogures", "Volver"}, null);

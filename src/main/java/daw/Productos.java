@@ -23,7 +23,7 @@ public class Productos {
         this.iva = iva;
         this.cantidad = cantidad;
     }
-
+    
     public Productos() {
     }
 
@@ -85,6 +85,10 @@ public class Productos {
 
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
+    }
+    
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override

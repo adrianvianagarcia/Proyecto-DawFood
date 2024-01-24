@@ -21,7 +21,7 @@ public class Catalogo {
         catalogo.add(p1);
     }
     
-    public int tamañoCatalgo(){
+    public int tamañoCatalogo(){
         return catalogo.size();
     }
     
@@ -35,7 +35,7 @@ public class Catalogo {
     
     public static String mostrarProducto(Catalogo c1) {
         String aux = "";
-        for (int i = 0; i < c1.tamañoCatalgo(); i++) {/*Actualiza mi String y le añade
+        for (int i = 0; i < c1.tamañoCatalogo(); i++) {/*Actualiza mi String y le añade
             todas las palabras en cada iteracion*/
             aux += ( c1.posElemento(i).getDescripcion()
                     +" "+c1.posElemento(i).getId()+("\n"));

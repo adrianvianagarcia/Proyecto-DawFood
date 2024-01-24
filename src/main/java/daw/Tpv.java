@@ -182,7 +182,7 @@ public class Tpv {
                         }
 
                         case 2 -> {//postres
-                            int productoElegido = MenusDeOpciones.selectorComidas();
+                            int productoElegido = MenusDeOpciones.selectorPostres();
                             switch (productoElegido) {
                                 case 0 -> {//frutas
                                     String menuHamburguesa = mostrarProductosPorCategoria(Consumibles.FRUTA, catalogo);
@@ -243,32 +243,110 @@ public class Tpv {
                             int eleccion = Integer.parseInt(
                                     JOptionPane.showInputDialog(null,
                                             listaProductosCatalogo));
-                            int opcion = 0;
                             int i;
-                            for (i = 0; i < catalogo.tamañoCatalgo(); i++) {
+                            for (i = 0; i < catalogo.tamañoCatalogo(); i++) {
                                 if (eleccion == (catalogo.posElemento(i).getId())) {
-                                    opcion = MenusDeOpciones.selectorDeAtributo();
+                                    MenusDeOpciones.selectorDeAtributo();
                                     break;
                                 }
                             }
-                            switch (opcion) {
+
+                            System.out.println(catalogo.posElemento(i));
+                            int precioNuevo = Integer.parseInt(
+                                    JOptionPane.showInputDialog(null,
+                                            "¿Cual va a ser el nuevo precio?"));
+                            catalogo.posElemento(i).setPrecioBase(precioNuevo);
+                            System.out.println(catalogo.posElemento(i));
+
+                        }
+
+
+                        case 1 -> {//nuevoProducto
+                            Productos p1 = new Productos();
+                            int opcionMenuTipoProducto = MenusDeOpciones.selectorDeProductoAdmin();
+                            switch (opcionMenuTipoProducto) {
                                 case 0 -> {
-                                    System.out.println(catalogo.posElemento(i));
-                                    int precioNuevo = Integer.parseInt(
-                                            JOptionPane.showInputDialog(null,
-                                                    "¿Cual va a ser el nuevo precio?"));
-                                    catalogo.posElemento(i).setPrecioBase(precioNuevo);
-                                    System.out.println(catalogo.posElemento(i));
+                                    p1.setTipo(TipoProducto.COMIDA);
+                                    int opcionMenuComida = MenusDeOpciones.selectorComidasAdmin();
+                                    switch (opcionMenuComida) {
+                                        case 0 -> {
+                                            p1.setConsumible(Consumibles.HAMBURGUESA);
+                                            pedirDatosProducto(p1, catalogo);
+                                            catalogo.guardarElemento(p1);
+                                        }
+                                        case 1 -> {
+                                            p1.setConsumible(Consumibles.PIZZA);
+                                            pedirDatosProducto(p1, catalogo);
+                                            catalogo.guardarElemento(p1);
+                                        }
+                                        case 2 -> {
+                                            p1.setConsumible(Consumibles.KEBAB);
+                                            pedirDatosProducto(p1, catalogo);
+                                            catalogo.guardarElemento(p1);
+                                        }
+                                    }
+                                }
+                                case 1 -> {
+                                    p1.setTipo(TipoProducto.BEBIDA);
+                                    int opcionMenuBebida = MenusDeOpciones.selectorBebidasAdmin();
+                                    switch (opcionMenuBebida) {
+                                        case 0 -> {
+                                            p1.setConsumible(Consumibles.REFRESCO);
+                                            pedirDatosProducto(p1, catalogo);
+                                            catalogo.guardarElemento(p1);
+                                        }
+                                        case 1 -> {
+                                            p1.setConsumible(Consumibles.CERVEZA);
+                                            pedirDatosProducto(p1, catalogo);
+                                            catalogo.guardarElemento(p1);
+                                        }
+                                        case 2 -> {
+                                            p1.setConsumible(Consumibles.AGUA);
+                                            pedirDatosProducto(p1, catalogo);
+                                            catalogo.guardarElemento(p1);
+                                        }
+                                    }
+                                }
+                                case 2 -> {
+                                    p1.setTipo(TipoProducto.POSTRE);
+                                    int opcionMenuPostre = MenusDeOpciones.selectorPostresAdmin();
+                                    switch (opcionMenuPostre) {
+                                        case 0 -> {
+                                            p1.setConsumible(Consumibles.FRUTA);
+                                            pedirDatosProducto(p1, catalogo);
+                                            catalogo.guardarElemento(p1);
+                                        }
+                                        case 1 ->{
+                                            p1.setConsumible(Consumibles.BOLLERIA);
+                                            pedirDatosProducto(p1, catalogo);
+                                            catalogo.guardarElemento(p1);
+                                        }
+                                        case 2 ->{
+                                            p1.setConsumible(Consumibles.YOGURES);
+                                            pedirDatosProducto(p1, catalogo);
+                                            catalogo.guardarElemento(p1);
+                                        }
+                                    }
                                 }
                             }
                         }
 
-                        case 1 -> {//nuevoProducto
-
-                        }
                         case 2 -> {//borrarProducto
+                            String listaProductosCatalogo = Catalogo.mostrarProducto(catalogo);
+                            int eleccion = Integer.parseInt(
+                                    JOptionPane.showInputDialog(null,
+                                            listaProductosCatalogo));
+                            int i;
+                            for (i = 0; i < catalogo.tamañoCatalogo(); i++) {
+                                if (eleccion == (catalogo.posElemento(i).getId())) {
+                                    break;
+                                }
+                            }
+
+                            catalogo.borrarProductoExistente(i);
 
                         }
+
                         case 3 -> {//consultarVentas
 
                         }
@@ -291,12 +369,27 @@ public class Tpv {
 
     public String mostrarProductosPorCategoria(Consumibles c1, Catalogo catalogo) {
         String aux = "";
-        for (int i = 0; i < catalogo.tamañoCatalgo(); i++) {
+        for (int i = 0; i < catalogo.tamañoCatalogo(); i++) {
             if (catalogo.posElemento(i).getConsumible().equals(c1)) {
                 aux += (catalogo.posElemento(i) + ("\n"));
             }
         }
         return aux;
+    }
+
+    public void pedirDatosProducto(Productos p1, Catalogo c1) {
+        int precio = Integer.parseInt(JOptionPane.showInputDialog(null, "Introduzca el precio"));
+        p1.setPrecioBase(precio);
+
+        String descripcion = JOptionPane.showInputDialog(null, "Introduzca la descripcion");
+        p1.setDescripcion(descripcion);
+
+        double iva = Double.parseDouble(JOptionPane.showInputDialog(null, "Introduzca el iva"));
+        p1.setIva(iva);
+
+        p1.setCantidad(0);
+
+        p1.setId(c1.tamañoCatalogo() + 1);
     }
 
     @Override
