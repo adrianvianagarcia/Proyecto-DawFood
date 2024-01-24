@@ -131,8 +131,28 @@ public class Tpv {
         catalogo.ordenarPorId();
         Cesta cesta = new Cesta();
         Object user;
-        do {
-            user = MenusDeOpciones.selectorDeUsuarios();
+        /*intento de gestion de error*/
+            boolean errorUser=true;
+             do{
+                try{
+                   user = MenusDeOpciones.selectorDeUsuarios(); 
+                }catch(NullPointerException npe){
+                    int opcion = JOptionPane.showOptionDialog(null, "Parece"
+                            + " que no ha seleccionado ninguna opción, ¿desea salir?", "¿Que desea?",
+                            JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
+                            null,
+                            new Object[]{"Salir", "Volver al menú principal"}, null);
+                    if (opcion == 0) {
+                        user = "Apagar TPV";
+                        errorUser=false;
+                        break;
+                    } else {
+                        user = "?";
+                        errorUser=false;
+                        break;
+                    }
+            }
+
             if (user.equals("Cliente")) {
                 int opcionMenu;
                 do {
@@ -140,7 +160,10 @@ public class Tpv {
                     switch (opcionMenu) {
                         case 0 -> {//comida
                             //hamburguesas
-                            int productoElegido = MenusDeOpciones.selectorComidas();
+                            Integer productoElegido = MenusDeOpciones.selectorComidas();
+                            if (productoElegido.equals(null)) {
+                                productoElegido = 3;
+                            }
                             switch (productoElegido) {
                                 case 0 -> {//hamburguesas
                                     String menuHamburguesa = mostrarProductosPorCategoria(Consumibles.HAMBURGUESA, catalogo);
@@ -178,6 +201,9 @@ public class Tpv {
                                 case 3 -> {//volver
                                     break;
                                 }
+                                default ->{
+                                    break;
+                                }
                             }
                         }
 
@@ -202,7 +228,10 @@ public class Tpv {
                             }
                         }
                         case 3 -> {//carrito
-                            int opcionCarrito = MenusDeOpciones.selectorCarrito();
+                            Integer opcionCarrito = MenusDeOpciones.selectorCarrito();
+                            if (opcionCarrito.equals(null)) {
+                                opcionCarrito = 4;
+                            }
                             switch (opcionCarrito) {
                                 case 0 -> {
 
@@ -347,7 +376,7 @@ public class Tpv {
 
                         }
 
-                        case 3 -> {//consultarVentas
+                        case 3 -> {//consultarVeentas
 
                         }
                         case 4 -> {//volver
@@ -356,7 +385,7 @@ public class Tpv {
 
                     }
                 } while (opcionMenu != 4);
-            } else {
+            }else{
                 apagarTVP();
             }
         } while (user != "Apagar TPV");
