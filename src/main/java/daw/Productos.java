@@ -7,23 +7,19 @@ public class Productos {
     private TipoProducto tipo;
     private Consumibles consumible;
     private double precioBase;
-    private double precioCantidad;
     private String descripcion;
     private int id;
     private double iva;
-    private int cantidad;
 
-    public Productos(TipoProducto tipo, Consumibles consumible, double precioBase, String descripcion, int id, double iva, int cantidad, double precioCantidad) {
+    public Productos(TipoProducto tipo, Consumibles consumible, double precioBase, String descripcion, int id, double iva) {
         this.tipo = tipo;
         this.consumible = consumible;
         this.precioBase = precioBase;
-        this.precioCantidad = precioBase * cantidad;
         this.descripcion = descripcion;
         this.id = id;
         this.iva = iva;
-        this.cantidad = cantidad;
     }
-    
+
     public Productos() {
     }
 
@@ -69,24 +65,9 @@ public class Productos {
 
     public int getId() {
         return id;
+
     }
 
-    public double getPrecioCantidad() {
-        return precioCantidad;
-    }
-
-    public void setPrecioCantidad(double precioCantidad) {
-        this.precioCantidad = precioCantidad;
-    }
-
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
-    
     public void setId(int id) {
         this.id = id;
     }
@@ -138,9 +119,7 @@ public class Productos {
         StringBuilder sb = new StringBuilder();
         sb.append("").append(descripcion);
         sb.append(", Precio individual: ").append(precioBase);
-        sb.append(", Precio según la cantidad elegida: ").append(precioCantidad);
         sb.append(", iva: ").append(iva);
-        sb.append(", cantidad: ").append(cantidad);
         sb.append(", idProducto: ").append(id);
         return sb.toString();
     }

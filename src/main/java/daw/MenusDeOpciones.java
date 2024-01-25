@@ -141,13 +141,19 @@ public class MenusDeOpciones {
         return opcion;
     }
     
-    public static Productos selectorProducto(int idProducto,Catalogo catalogo,int cantidad){
-        Productos producto=new Productos();
+    public static ProductoCarrito selectorProducto(int idProducto,Catalogo catalogo,int cantidad){
+        ProductoCarrito producto=new ProductoCarrito();
+        //busca el porducto y lo guarda en uno de tipo ProductoCarrito
         for(int i=0;i<catalogo.tamañoCatalogo();i++){
             if(catalogo.posElemento(i).getId()==idProducto){
-                producto=catalogo.catalogo.get(i);
+                producto.setPrecioBase(catalogo.catalogo.get(i).getPrecioBase());
+                producto.setConsumible(catalogo.catalogo.get(i).getConsumible());
+                producto.setDescripcion(catalogo.catalogo.get(i).getDescripcion());
+                producto.setIva(catalogo.catalogo.get(i).getIva());
                 producto.setCantidad(cantidad);
+                producto.setPrecioTotal(cantidad*producto.getPrecioBase());
             }
+            
         }
         return producto;
     }
