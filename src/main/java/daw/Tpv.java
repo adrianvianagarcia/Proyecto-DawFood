@@ -167,15 +167,16 @@ public class Tpv {
                             switch (productoElegido) {
                                 case 0 -> {//hamburguesas
                                     String menuHamburguesa = mostrarProductosPorCategoria(Consumibles.HAMBURGUESA, catalogo);
-                                    JOptionPane.showInputDialog(menuHamburguesa);
+                                    añadirProducto(menuHamburguesa, catalogo, cesta);
+                                    
                                 }
                                 case 1 -> {//Pizzas
                                     String menuHamburguesa = mostrarProductosPorCategoria(Consumibles.PIZZA, catalogo);
-                                    JOptionPane.showInputDialog(menuHamburguesa);
+                                    añadirProducto(menuHamburguesa, catalogo, cesta);
                                 }
                                 case 2 -> {//kebabs
                                     String menuHamburguesa = mostrarProductosPorCategoria(Consumibles.KEBAB, catalogo);
-                                    JOptionPane.showInputDialog(menuHamburguesa);
+                                    añadirProducto(menuHamburguesa, catalogo, cesta);
                                 }
                                 case 3 -> {//volver
                                     break;
@@ -188,15 +189,15 @@ public class Tpv {
                             switch (productoElegido) {
                                 case 0 -> {//refrescos
                                     String menuHamburguesa = mostrarProductosPorCategoria(Consumibles.REFRESCO, catalogo);
-                                    JOptionPane.showInputDialog(menuHamburguesa);
+                                    añadirProducto(menuHamburguesa, catalogo, cesta);
                                 }
                                 case 1 -> {//Cervezas
                                     String menuHamburguesa = mostrarProductosPorCategoria(Consumibles.CERVEZA, catalogo);
-                                    JOptionPane.showInputDialog(menuHamburguesa);
+                                    añadirProducto(menuHamburguesa, catalogo, cesta);
                                 }
                                 case 2 -> {//Agua
                                     String menuHamburguesa = mostrarProductosPorCategoria(Consumibles.AGUA, catalogo);
-                                    JOptionPane.showInputDialog(menuHamburguesa);
+                                    añadirProducto(menuHamburguesa, catalogo, cesta);
                                 }
                                 case 3 -> {//volver
                                     break;
@@ -212,15 +213,15 @@ public class Tpv {
                             switch (productoElegido) {
                                 case 0 -> {//frutas
                                     String menuHamburguesa = mostrarProductosPorCategoria(Consumibles.FRUTA, catalogo);
-                                    JOptionPane.showInputDialog(menuHamburguesa);
+                                    añadirProducto(menuHamburguesa, catalogo, cesta);
                                 }
                                 case 1 -> {//bolleria
                                     String menuHamburguesa = mostrarProductosPorCategoria(Consumibles.BOLLERIA, catalogo);
-                                    JOptionPane.showInputDialog(menuHamburguesa);
+                                    añadirProducto(menuHamburguesa, catalogo, cesta);
                                 }
                                 case 2 -> {//yogures
                                     String menuHamburguesa = mostrarProductosPorCategoria(Consumibles.YOGURES, catalogo);
-                                    JOptionPane.showInputDialog(menuHamburguesa);
+                                    añadirProducto(menuHamburguesa, catalogo, cesta);
                                 }
                                 case 3 -> {//volver
                                     break;
@@ -229,12 +230,9 @@ public class Tpv {
                         }
                         case 3 -> {//carrito
                             Integer opcionCarrito = MenusDeOpciones.selectorCarrito();
-                            if (opcionCarrito.equals(null)) {
-                                opcionCarrito = 4;
-                            }
                             switch (opcionCarrito) {
                                 case 0 -> {
-
+                                    System.out.println(cesta);
                                 }
                                 case 1 -> {
 
@@ -419,6 +417,12 @@ public class Tpv {
         p1.setCantidad(0);
 
         p1.setId(c1.tamañoCatalogo() + 1);
+    }
+    
+    public void añadirProducto(String menu,Catalogo catalogo,Cesta cesta){
+        int producto = Integer.parseInt(JOptionPane.showInputDialog(menu));
+        int cantidad = MenusDeOpciones.selectorDeCantidad();
+        cesta.guardarElemento(MenusDeOpciones.selectorProducto(producto, catalogo, cantidad));
     }
 
     @Override

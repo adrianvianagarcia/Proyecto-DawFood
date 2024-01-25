@@ -5,6 +5,7 @@
 package daw;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import javax.swing.JOptionPane;
 
 /**
@@ -119,6 +120,36 @@ public class MenusDeOpciones {
                 null,
                 new Object[]{"Cambiar producto", "Nuevo producto", "Borrar producto","Consultar ventas", "Volver"}, null);
         return opcion;
+    }
+    
+    public static int selectorDeCantidad(){
+        int opcion=0;
+        boolean errorOpcion=true;
+        do{
+            try {
+                opcion = Integer.parseInt(JOptionPane.showInputDialog("Introduzca una cantidad"));
+                while(opcion<=0){
+                    opcion=Integer.parseInt(JOptionPane.showInputDialog("No puede introducir ni valores negativos ni nulos"+("\n")+
+                            "Inténtalo de nuevo"));
+                }
+                errorOpcion=false;
+            } catch (NumberFormatException nfe) {
+                JOptionPane.showMessageDialog(null,"Ha seleccionado una opcion no válida"+("\n")+
+                        "Inténtalo de nuevo");
+            }
+        }while(errorOpcion);
+        return opcion;
+    }
+    
+    public static Productos selectorProducto(int idProducto,Catalogo catalogo,int cantidad){
+        Productos producto=new Productos();
+        for(int i=0;i<catalogo.tamañoCatalogo();i++){
+            if(catalogo.posElemento(i).getId()==idProducto){
+                producto=catalogo.catalogo.get(i);
+                producto.setCantidad(cantidad);
+            }
+        }
+        return producto;
     }
     
 }
