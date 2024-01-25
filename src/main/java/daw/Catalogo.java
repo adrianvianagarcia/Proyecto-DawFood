@@ -37,8 +37,8 @@ public class Catalogo {
         String aux = "";
         for (int i = 0; i < c1.tamañoCatalogo(); i++) {/*Actualiza mi String y le añade
             todas las palabras en cada iteracion*/
-            aux += ( c1.posElemento(i).getDescripcion()
-                    +" "+c1.posElemento(i).getId()+("\n"));
+            aux += (c1.posElemento(i).getId()+" "+ c1.posElemento(i).getDescripcion()
+                    +("\n"));
         }
         return aux;
     }

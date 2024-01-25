@@ -47,7 +47,8 @@ public class Tpv {
 
     public boolean verifContraseña(String contraseñaUser, String contraseña) {
         boolean errorContra = true;
-        if (contraseñaUser.equalsIgnoreCase(contraseña)) {
+        if (contraseñaUser.equals(
+                contraseña)) {
             errorContra = false;
         }
         return errorContra;
@@ -134,9 +135,8 @@ public class Tpv {
         /*intento de gestion de error*/
         boolean errorUser = true;
         do {
-     
-                user = MenusDeOpciones.selectorDeUsuarios();
 
+            user = MenusDeOpciones.selectorDeUsuarios();
 
             if (user != null) {
                 if (user.equals("Cliente")) {
@@ -239,6 +239,7 @@ public class Tpv {
                             }
                         }
                     } while (opcionMenu != 4);
+
                 } else if (user.equals("Administrador")) {
                     String contraseña = generarContraseña();
                     System.out.println("La contraseña del TPV es: " + contraseña);
@@ -253,23 +254,69 @@ public class Tpv {
                         switch (opcionMenu) {
                             case 0 -> {//cambiarProducto
                                 String listaProductosCatalogo = Catalogo.mostrarProducto(catalogo);
-                                int eleccion = Integer.parseInt(
-                                        JOptionPane.showInputDialog(null,
-                                                listaProductosCatalogo));
+                                int eleccion = 0;
+                                do {
+                                    try {
+                                        eleccion = Integer.parseInt(
+                                                JOptionPane.showInputDialog(null,
+                                                        listaProductosCatalogo));
+                                    } catch (NumberFormatException nfe) {
+                                        JOptionPane.showMessageDialog(null,
+                                                "Introduzca una opcion valida");
+                                    }
+                                } while (eleccion <= 0 || eleccion > catalogo.tamañoCatalogo());
+                                int opcion = 0;
                                 int i;
                                 for (i = 0; i < catalogo.tamañoCatalogo(); i++) {
                                     if (eleccion == (catalogo.posElemento(i).getId())) {
-                                        MenusDeOpciones.selectorDeAtributo();
+                                        opcion = MenusDeOpciones.selectorDeAtributo();
                                         break;
                                     }
                                 }
 
-                                System.out.println(catalogo.posElemento(i));
-                                int precioNuevo = Integer.parseInt(
-                                        JOptionPane.showInputDialog(null,
-                                                "¿Cual va a ser el nuevo precio?"));
-                                catalogo.posElemento(i).setPrecioBase(precioNuevo);
-                                System.out.println(catalogo.posElemento(i));
+                                switch (opcion) {
+                                    case 0 -> {
+                                        double precioNuevo = 0;
+                                        boolean repetir;
+                                        do {
+                                            try {
+                                                precioNuevo = Double.parseDouble(
+                                                        JOptionPane.showInputDialog(null,
+                                                                "¿Cual va a ser el nuevo precio?"));
+                                                repetir = false;
+                                            } catch (NumberFormatException nfe) {
+                                                JOptionPane.showMessageDialog(null,
+                                                        "Introduzca una opcion valida");
+                                                repetir = true;
+                                            }
+                                        } while (repetir);
+                                        catalogo.posElemento(i).setPrecioBase(precioNuevo);
+                                    }
+
+                                    case 1 -> {
+                                        String descripcionNueva = JOptionPane.showInputDialog(null,
+                                                "¿Cual va a ser la nueva descripcion?");
+                                        catalogo.posElemento(i).setDescripcion(descripcionNueva);
+                                    }
+
+                                    case 2 -> {
+                                        double ivaNuevo = 0;
+                                        boolean repetir;
+                                        do {
+                                            try {
+                                                ivaNuevo = Double.parseDouble(
+                                                        JOptionPane.showInputDialog(null,
+                                                                "¿Cual va a ser el nuevo iva? (Formato 0.)"));
+                                                repetir = false;
+                                            } catch (NumberFormatException nfe) {
+                                                JOptionPane.showMessageDialog(null,
+                                                        "Introduzca una opcion valida");
+                                                repetir = true;
+                                            }
+                                        } while (repetir);
+                                        catalogo.posElemento(i).setIva(ivaNuevo);
+                                    }
+                                }
 
                             }
 
@@ -338,11 +385,13 @@ public class Tpv {
                                                 pedirDatosProducto(p1, catalogo);
                                                 catalogo.guardarElemento(p1);
                                             }
+
                                         }
+
                                     }
+
                                 }
                             }
-
                             case 2 -> {//borrarProducto
                                 String listaProductosCatalogo = Catalogo.mostrarProducto(catalogo);
                                 int eleccion = Integer.parseInt(
@@ -367,11 +416,11 @@ public class Tpv {
                             }
 
                         }
-                    } while (opcionMenu != 4);
+                    } while (opcionMenu != 4);//
                 } else {
                     apagarTVP();
                 }
-            }else{
+            } else {
                 Integer opcion = JOptionPane.showOptionDialog(null, "Parece"
                         + " que no ha seleccionado ninguna opción, ¿desea salir?", "¿Que desea?",
                         JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
@@ -385,6 +434,7 @@ public class Tpv {
 
                     errorUser = false;
                 }
+
             }
         } while (user != "Apagar TPV");
 
@@ -405,22 +455,48 @@ public class Tpv {
     }
 
     public void pedirDatosProducto(Productos p1, Catalogo c1) {
-        int precio = Integer.parseInt(JOptionPane.showInputDialog(null, "Introduzca el precio"));
+        double precio = 0;
+        boolean repetir;
+        do {
+            try {
+                precio = Double.parseDouble(
+                        JOptionPane.showInputDialog(null,
+                                "Introduzca el precio"));
+                repetir = false;
+            } catch (NumberFormatException nfe) {
+                JOptionPane.showMessageDialog(null,
+                        "Introduzca una opcion valida");
+                repetir = true;
+            }
+        } while (repetir);
         p1.setPrecioBase(precio);
 
         String descripcion = JOptionPane.showInputDialog(null, "Introduzca la descripcion");
         p1.setDescripcion(descripcion);
 
-        double iva = Double.parseDouble(JOptionPane.showInputDialog(null, "Introduzca el iva"));
+        double iva = 0;
+        do {
+            try {
+                iva = Double.parseDouble(
+                        JOptionPane.showInputDialog(null,
+                                "Introduzca el iva (Formato 0."));
+                repetir = false;
+            } catch (NumberFormatException nfe) {
+                JOptionPane.showMessageDialog(null,
+                        "Introduzca una opcion valida");
+                repetir = true;
+            }
+        } while (repetir);
         p1.setIva(iva);
 
         p1.setId(c1.tamañoCatalogo() + 1);
     }
 
     public void añadirProducto(String menu, Catalogo catalogo, Carrito cesta) {
+
         int producto = Integer.parseInt(JOptionPane.showInputDialog(menu));
         int cantidad = MenusDeOpciones.selectorDeCantidad();
-        cesta.guardarElemento(MenusDeOpciones.selectorProducto(producto, catalogo,cantidad));
+        cesta.guardarElemento(MenusDeOpciones.selectorProducto(producto, catalogo, cantidad));
     }
 
     @Override
