@@ -118,7 +118,7 @@ public class Productos {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("").append(descripcion);
-        sb.append(", Precio individual: ").append(precioBase);
+        sb.append(precioBase).append(" €");
         sb.append(", iva: ").append(iva);
         sb.append(", idProducto: ").append(id);
         return sb.toString();

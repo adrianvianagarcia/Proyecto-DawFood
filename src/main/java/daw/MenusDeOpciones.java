@@ -153,5 +153,24 @@ public class MenusDeOpciones {
         }
         return producto;
     }
+    
+    public static int solicitarCVV(){
+        int Cvv=0; 
+        String cvv=" ";
+         boolean errorCvv=true;
+        do{
+            do{
+                try{
+                    cvv = (JOptionPane.showInputDialog("introduzca su cvv" + "(\n)" + " (tenga en cuenta que solo son tres digitos)"));
+                    Cvv=Integer.parseInt(cvv);
+                    errorCvv=false;
+                }catch(NumberFormatException nfe){
+                    JOptionPane.showMessageDialog(null,"No has introducido valores numéricos"+"(\n)"+"Intentelo de nuevo");
+                }
+            }while(errorCvv);
+        }while(cvv.length()!=3);
+        
+        return Cvv;
+    }
 
 }
