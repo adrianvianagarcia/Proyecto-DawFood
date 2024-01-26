@@ -412,7 +412,7 @@ public class Tpv {
 
                                 }
                             }
-                            case 2 -> {//borrarProducto
+                            case 2 -> {//borrarProducto//
                                 String listaProductosCatalogo = Catalogo.mostrarProducto(catalogo);
                                 int eleccion = 0;
                                 do {
