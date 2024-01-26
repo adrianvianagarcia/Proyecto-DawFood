@@ -394,9 +394,17 @@ public class Tpv {
                             }
                             case 2 -> {//borrarProducto
                                 String listaProductosCatalogo = Catalogo.mostrarProducto(catalogo);
-                                int eleccion = Integer.parseInt(
-                                        JOptionPane.showInputDialog(null,
-                                                listaProductosCatalogo));
+                                int eleccion = 0;
+                                do {
+                                    try {
+                                        eleccion = Integer.parseInt(
+                                                JOptionPane.showInputDialog(null,
+                                                        listaProductosCatalogo));
+                                    } catch (NumberFormatException nfe) {
+                                        JOptionPane.showMessageDialog(null,
+                                                "Introduzca una opcion valida");
+                                    }
+                                } while (eleccion <= 0 || eleccion > catalogo.tamañoCatalogo());
                                 int i;
                                 for (i = 0; i < catalogo.tamañoCatalogo(); i++) {
                                     if (eleccion == (catalogo.posElemento(i).getId())) {
@@ -494,7 +502,17 @@ public class Tpv {
 
     public void añadirProducto(String menu, Catalogo catalogo, Carrito cesta) {
 
-        int producto = Integer.parseInt(JOptionPane.showInputDialog(menu));
+        int producto = 0;
+        do {
+            try {
+                producto = Integer.parseInt(
+                        JOptionPane.showInputDialog(null,
+                                menu));
+            } catch (NumberFormatException nfe) {
+                JOptionPane.showMessageDialog(null,
+                        "Introduzca una opcion valida");
+            }
+        } while (producto <= 0 || producto > catalogo.tamañoCatalogo());
         int cantidad = MenusDeOpciones.selectorDeCantidad();
         cesta.guardarElemento(MenusDeOpciones.selectorProducto(producto, catalogo, cantidad));
     }
