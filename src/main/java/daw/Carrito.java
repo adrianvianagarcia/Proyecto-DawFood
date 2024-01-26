@@ -1,6 +1,7 @@
 package daw;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Carrito {
 
@@ -17,6 +18,34 @@ public class Carrito {
             precioTotal = +carrito.get(i).getPrecioBase();
         }
         return precioTotal;
+    }
+    
+    public void ordenarPorId() {
+        Collections.sort(carrito, (l1, l2) -> Integer.compare(l1.getId(),
+                l2.getId()));
+    }
+
+    public void borrarProductoExistente(int id) {
+        ordenarPorId();
+        carrito.remove(id);
+    }
+    
+    public int tamañoCatalogo(){
+        return carrito.size();
+    }
+    
+    public ProductoCarrito posElemento(int pos){
+        return carrito.get(pos);
+    }
+    
+    public static String mostrarProducto(Carrito c1) {
+        String aux = "";
+        for (int i = 0; i < c1.tamañoCatalogo(); i++) {/*Actualiza mi String y le añade
+            todas las palabras en cada iteracion*/
+            aux += (c1.posElemento(i).getId()+" "+ c1.posElemento(i).getDescripcion()
+                    +("\n"));
+        }
+        return aux;
     }
 
     @Override

@@ -19,8 +19,9 @@ public class ProductoCarrito {
     private String descripcion;
     private double iva;
     private int cantidad;
+    private int id;
 
-    public ProductoCarrito(TipoProducto tipo, Consumibles consumible, double precioBase, double precioTotal, String descripcion, double iva, int cantidad) {
+    public ProductoCarrito(TipoProducto tipo, Consumibles consumible, double precioBase, double precioTotal, String descripcion, double iva, int cantidad, int id) {
         this.tipo = tipo;
         this.consumible = consumible;
         this.precioBase = precioBase;
@@ -28,6 +29,7 @@ public class ProductoCarrito {
         this.descripcion = descripcion;
         this.iva = iva;
         this.cantidad = cantidad;
+        this.id = id;
     }
     
     public ProductoCarrito() {
@@ -94,6 +96,14 @@ public class ProductoCarrito {
 
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
+    }
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override

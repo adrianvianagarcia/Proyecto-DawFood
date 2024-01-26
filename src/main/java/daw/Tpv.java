@@ -217,19 +217,39 @@ public class Tpv {
                             case 3 -> {//carrito
                                 Integer opcionCarrito = MenusDeOpciones.selectorCarrito();
                                 switch (opcionCarrito) {
-                                    case 0 -> {
+                                    case 0 -> {//Ver carrito
                                         System.out.println(carrito);
                                     }
-                                    case 1 -> {
+                                    case 1 -> {//Borrar producto carrito
+                                        carrito.ordenarPorId();
+                                        String listaProductosCarrito = Carrito.mostrarProducto(carrito);
+                                        int eleccion = 0;
+                                        do {
+                                            try {
+                                                eleccion = Integer.parseInt(
+                                                        JOptionPane.showInputDialog(null,
+                                                                listaProductosCarrito));
+                                            } catch (NumberFormatException nfe) {
+                                                JOptionPane.showMessageDialog(null,
+                                                        "Introduzca una opcion valida");
+                                            }
+                                        } while (eleccion <= 0 || eleccion > carrito.tamañoCatalogo());
+                                        int i;
+                                        for (i = 0; i < carrito.tamañoCatalogo(); i++) {
+                                            if (eleccion == (carrito.posElemento(i).getId())) {
+                                                break;
+                                            }
+                                        }
+
+                                        carrito.borrarProductoExistente(i);
+                                    }
+                                    case 2 -> {//Pagar el pedido
 
                                     }
-                                    case 2 -> {
+                                    case 3 -> {//Cancelar pedido
 
                                     }
-                                    case 3 -> {
-
-                                    }
-                                    case 4 -> {
+                                    case 4 -> {//volver
                                         break;
                                     }
                                 }
