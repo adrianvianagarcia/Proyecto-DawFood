@@ -6,6 +6,7 @@ package daw;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,30 +23,44 @@ public class Metodos {
         }
         return aux;
     }
-    
+
     public static String mostrarProductoCarrito(ArrayList<ProductoCarrito> lista) {
         String aux = "";
         for (int i = 0; i < lista.size(); i++) {/*Actualiza mi String y le añade
             todas las palabras en cada iteracion*/
             aux += (lista.get(i).getDescripcion()
-                    + " -- " + lista.get(i).getPrecioBase()+"€ -- "+ lista.get(i).getCantidad() +"uds -- "+lista.get(i).getPrecioTotal()+ "€" +("\n"));
+                    + " -- " + lista.get(i).getPrecioBase() + "€ -- " + lista.get(i).getCantidad() + "uds -- " + lista.get(i).getPrecioTotal() + "€" + ("\n"));
         }
         return aux;
     }
 
-    public static boolean pasarelaDePago(ArrayList<TarjetasDeCredito> baseDatosTarjetas) {
+    public static TarjetasDeCredito pasarelaDePago(ArrayList<TarjetasDeCredito> baseDatosTarjetas) {
         boolean compraValida = false;
-        for (int i = 0; i < baseDatosTarjetas.size(); i++) {
-            if (baseDatosTarjetas.get(i).verificarNumeroTarjeta(baseDatosTarjetas, MenusDeOpciones.solicitarNumTarjeta()) == true) {
-                if (baseDatosTarjetas.get(i).verificarCVV(baseDatosTarjetas, MenusDeOpciones.solicitarCVV()) == true) {
-                    if (baseDatosTarjetas.get(i).verificarFechaCaducidad(baseDatosTarjetas,MenusDeOpciones.solicitarFechaCaducidad())==true) {
-                        compraValida=true;
-                        break;
-                    }
+        TarjetasDeCredito tarjeta = null;
+
+        do {
+            do {
+                tarjeta = TarjetasDeCredito.verificarNumeroTarjeta(baseDatosTarjetas,
+                        MenusDeOpciones.solicitarNumTarjeta());
+                if (tarjeta == null) {
+                    JOptionPane.showMessageDialog(null, "No se ha "
+                            + "podido encontrar la tarjeta de credito, intentelo de nuevo");
+                }
+
+            } while (tarjeta == null);
+
+            int cvv = MenusDeOpciones.solicitarCVV();
+
+            if (cvv == tarjeta.getCvv()) {
+                LocalDate fechaCaducidad = MenusDeOpciones.solicitarFechaCaducidad();
+
+                if (fechaCaducidad.equals(tarjeta.getFechaCaducidad())) {
+                    compraValida = true;
                 }
             }
-        }
-        return compraValida;
+        } while (compraValida == false);
+
+        return tarjeta;
     }
 
 }

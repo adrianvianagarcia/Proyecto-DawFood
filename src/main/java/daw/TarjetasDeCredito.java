@@ -45,18 +45,18 @@ public class TarjetasDeCredito {
         this.saldo = saldo;
     }
 
-public boolean verificarNumeroTarjeta(ArrayList<TarjetasDeCredito> tarjetas, int ultimosCuatroDigitos) {
+    public static TarjetasDeCredito verificarNumeroTarjeta(ArrayList<TarjetasDeCredito> tarjetas, int numtarjeta) {
         for (TarjetasDeCredito tarjeta : tarjetas) {
-            if (tarjeta.getNumTarjeta() == ultimosCuatroDigitos) {
-                return true;
+            if (tarjeta.getNumTarjeta() == numtarjeta) {
+                return tarjeta;
             }
         }
-        return false;
+        return null;
     }
 
     public boolean verificarCVV(ArrayList<TarjetasDeCredito> tarjetas, int cvv) {
         for (TarjetasDeCredito tarjeta : tarjetas) {
-            if (tarjeta.getCvv()== cvv) {
+            if (tarjeta.getCvv() == cvv) {
                 return true;
             }
         }
@@ -65,7 +65,7 @@ public boolean verificarNumeroTarjeta(ArrayList<TarjetasDeCredito> tarjetas, int
 
     public boolean verificarFechaCaducidad(ArrayList<TarjetasDeCredito> tarjetas, LocalDate fechaCaducidad) {
         for (TarjetasDeCredito tarjeta : tarjetas) {
-            if (tarjeta.getFechaCaducidad()== fechaCaducidad) {
+            if (tarjeta.getFechaCaducidad() == fechaCaducidad) {
                 return true;
             }
         }
