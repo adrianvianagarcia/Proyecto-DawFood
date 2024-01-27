@@ -262,9 +262,10 @@ public class Tpv {
                                         
                                         TarjetasDeCredito tarjetaCliente = Metodos.pasarelaDePago(BBDDTarjetas.baseDatosTarjetas);
                                         double precioTotal = carrito.precioTotal();
-                                        tarjetaCliente.setSaldo(tarjetaCliente.getSaldo() - precioTotal);
-                                        
+                                        tarjetaCliente.setSaldo(tarjetaCliente.getSaldo() - precioTotal);    
                                         Ticket ticket = new Ticket();
+                                        ticket.generadorDeTicket(ticket, carrito);
+                                        System.out.println(ticket);
                                     }
                                     case 3 -> {//Cancelar pedido
                                         carrito.carrito.clear();

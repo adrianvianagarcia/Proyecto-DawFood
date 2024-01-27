@@ -33,14 +33,6 @@ public class ProductoCarrito {
     }
     
     public ProductoCarrito() {
-        this.tipo = TipoProducto.COMIDA;
-        this.consumible = Consumibles.HAMBURGUESA;
-        this.precioBase = 0.0;
-        this.precioTotal = 0.0;
-        this.descripcion = "";
-        this.iva = 0.0;
-        this.cantidad = 0;
-        this.id = 0;
     }
 
     public TipoProducto getTipo() {
