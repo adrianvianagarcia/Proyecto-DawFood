@@ -181,18 +181,18 @@ public class MenusDeOpciones {
     public static int solicitarNumTarjeta() {
         int NumTarjeta = 0;
         String numTarjeta = " ";
-        boolean errorCvv = true;
+        boolean errorNumTarjeta = true;
         do {
             do {
                 try {
                     numTarjeta = (JOptionPane.showInputDialog("introduzca su número de la tarjeta" + 
                             "\n" + " (tenga en cuenta que solo son los 4 últimos dígitos)"));
                     NumTarjeta = Integer.parseInt(numTarjeta);
-                    errorCvv = false;
+                    errorNumTarjeta = false;
                 } catch (NumberFormatException nfe) {
                     JOptionPane.showMessageDialog(null, "No has introducido valores numéricos" + "(\n)" + "Intentelo de nuevo");
                 }
-            } while (errorCvv);
+            } while (errorNumTarjeta);
         } while (numTarjeta.length() != 4);
 
         return NumTarjeta;

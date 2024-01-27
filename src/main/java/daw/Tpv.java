@@ -259,10 +259,12 @@ public class Tpv {
                                         carrito.borrarProductoExistente(i);
                                     }
                                     case 2 -> {//Pagar el pedido
-
+                                        
+                                        Metodos.pasarelaDePago(BBDDTarjetas.baseDatosTarjetas);
+                                        
                                     }
                                     case 3 -> {//Cancelar pedido
-
+                                        carrito.carrito.clear();
                                     }
                                     case 4 -> {//volver
                                         break;
