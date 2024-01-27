@@ -77,7 +77,7 @@ public class Ticket {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Ticket{");
+        sb.append("Su ticket: ");
         sb.append("id=").append(id);
         sb.append(", numeroPedido=").append(numeroPedido);
         sb.append(", precioTotal=").append(precioTotal);

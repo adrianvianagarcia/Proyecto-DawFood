@@ -57,6 +57,8 @@ public class Tpv {
     
     public void encenderTPV() throws InterruptedException {
         final int diaMes = 1;
+        // inicializamos las ventas
+        Ventas ventas =new Ventas();
         //creamos todas las tarjetas
         TarjetasDeCredito t1 = new TarjetasDeCredito(7785, LocalDate.of(2027, 9, diaMes), 987, "Óscar Morales", 200.00);
         TarjetasDeCredito t2 = new TarjetasDeCredito(0000, LocalDate.of(2027, 12, diaMes), 000, "Adrian Viana", 100.00);
@@ -262,15 +264,25 @@ public class Tpv {
                                         
                                         TarjetasDeCredito tarjetaCliente = Metodos.pasarelaDePago(BBDDTarjetas.baseDatosTarjetas);
                                         double precioTotal = carrito.precioTotal();
+                                        if(tarjetaCliente.getSaldo()<precioTotal){
+                                            carrito.carrito.clear();
+                                            JOptionPane.showMessageDialog(null,"No tienes fondos suficientes para realizar la compra");
+                                            break;
+                                        }
                                         tarjetaCliente.setSaldo(tarjetaCliente.getSaldo() - precioTotal);    
                                         Ticket ticket = new Ticket();
                                         ticket.generadorDeTicket(ticket, carrito);
-                                        System.out.println(ticket);
+                                        ventas.ventas.add(ticket);
+                                        ticket.setId(ventas.tamañoVentas());
+                                        ticket.setNumeroPedido(0);
+                                        carrito.carrito.clear();
+                                        
                                     }
                                     case 3 -> {//Cancelar pedido
                                         carrito.carrito.clear();
                                     }
                                     case 4 -> {//volver
+                                        
                                         break;
                                     }
                                 }
@@ -282,6 +294,7 @@ public class Tpv {
                     } while (opcionMenu != 4);
                     
                 } else if (user.equals("Administrador")) {
+                    carrito.carrito.clear();
                     String contraseña = generarContraseña();
                     System.out.println("La contraseña del TPV es: " + contraseña);
                     String contraseñaUser;

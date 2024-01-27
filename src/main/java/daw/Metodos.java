@@ -34,6 +34,15 @@ public class Metodos {
         return aux;
     }
 
+    public static String mostrarTicket(ArrayList<Ticket> lista) {
+        String aux = "";
+        for (int i = 0; i < lista.size(); i++) {/*Actualiza mi String y le añade
+            todas las palabras en cada iteracion*/
+            aux += (lista.get(i).getId()+" -- "+lista.get(i).getPrecioTotal()+("\n"));
+        }
+        return aux;
+    }
+    
     public static TarjetasDeCredito pasarelaDePago(ArrayList<TarjetasDeCredito> baseDatosTarjetas) {
         boolean compraValida = false;
         TarjetasDeCredito tarjeta = null;
@@ -48,7 +57,6 @@ public class Metodos {
                 }
 
             } while (tarjeta == null);
-
             int cvv = MenusDeOpciones.solicitarCVV();
 
             if (cvv == tarjeta.getCvv()) {
