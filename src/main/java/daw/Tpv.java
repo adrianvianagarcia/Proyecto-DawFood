@@ -233,9 +233,9 @@ public class Tpv {
                                                 JOptionPane.showMessageDialog(null,
                                                         "Introduzca una opcion valida");
                                             }
-                                        } while (eleccion <= 0 || eleccion > carrito.tamañoCatalogo());
+                                        } while (eleccion <= 0 || eleccion > carrito.tamañoCarrito());
                                         int i;
-                                        for (i = 0; i < carrito.tamañoCatalogo(); i++) {
+                                        for (i = 0; i < carrito.tamañoCarrito(); i++) {
                                             if (eleccion == (carrito.posElemento(i).getId())) {
                                                 break;
                                             }
@@ -298,19 +298,19 @@ public class Tpv {
                                     case 0 -> {
                                         double precioNuevo = 0;
                                         boolean repetir;
-                                        do{
                                         do {
-                                            try {
-                                                precioNuevo = Double.parseDouble(
-                                                        JOptionPane.showInputDialog(null,
-                                                                "¿Cual va a ser el nuevo precio?"));
-                                                repetir = false;
-                                            } catch (NumberFormatException nfe) {
-                                                JOptionPane.showMessageDialog(null,
-                                                        "Introduzca una opcion valida");
-                                                repetir = true;
-                                            }
-                                        } while (repetir);
+                                            do {
+                                                try {
+                                                    precioNuevo = Double.parseDouble(
+                                                            JOptionPane.showInputDialog(null,
+                                                                    "¿Cual va a ser el nuevo precio?"));
+                                                    repetir = false;
+                                                } catch (NumberFormatException nfe) {
+                                                    JOptionPane.showMessageDialog(null,
+                                                            "Introduzca una opcion valida");
+                                                    repetir = true;
+                                                }
+                                            } while (repetir);
                                         } while (precioNuevo <= 0);
                                         catalogo.posElemento(i).setPrecioBase(precioNuevo);
                                     }
@@ -487,19 +487,19 @@ public class Tpv {
     public void pedirDatosProducto(Productos p1, Catalogo c1) {
         double precio = 0;
         boolean repetir;
-        do{
         do {
-            try {
-                precio = Double.parseDouble(
-                        JOptionPane.showInputDialog(null,
-                                "Introduzca el precio"));
-                repetir = false;
-            } catch (NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(null,
-                        "Introduzca una opcion valida");
-                repetir = true;
-            }
-        } while (repetir);
+            do {
+                try {
+                    precio = Double.parseDouble(
+                            JOptionPane.showInputDialog(null,
+                                    "Introduzca el precio"));
+                    repetir = false;
+                } catch (NumberFormatException nfe) {
+                    JOptionPane.showMessageDialog(null,
+                            "Introduzca una opcion valida");
+                    repetir = true;
+                }
+            } while (repetir);
         } while (precio <= 0);
         p1.setPrecioBase(precio);
 
@@ -524,7 +524,7 @@ public class Tpv {
         p1.setId(c1.tamañoCatalogo() + 1);
     }
 
-    public void añadirProducto(String menu, Catalogo catalogo, Carrito cesta) {
+    public void añadirProducto(String menu, Catalogo catalogo, Carrito carrito) {
 
         int producto = 0;
         do {
@@ -538,7 +538,9 @@ public class Tpv {
             }
         } while (producto <= 0 || producto > catalogo.tamañoCatalogo());
         int cantidad = MenusDeOpciones.selectorDeCantidad();
-        cesta.guardarElemento(MenusDeOpciones.selectorProducto(producto, catalogo, cantidad));
+        ProductoCarrito p1 = (MenusDeOpciones.selectorProducto(producto, catalogo, cantidad));
+        carrito.guardarElemento(p1);
+        p1.setId(carrito.tamañoCarrito());
     }
 
     @Override

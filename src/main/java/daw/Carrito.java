@@ -30,7 +30,7 @@ public class Carrito {
         carrito.remove(id);
     }
     
-    public int tamañoCatalogo(){
+    public int tamañoCarrito(){
         return carrito.size();
     }
     
@@ -40,7 +40,7 @@ public class Carrito {
     
     public static String mostrarProducto(Carrito c1) {
         String aux = "";
-        for (int i = 0; i < c1.tamañoCatalogo(); i++) {/*Actualiza mi String y le añade
+        for (int i = 0; i < c1.tamañoCarrito(); i++) {/*Actualiza mi String y le añade
             todas las palabras en cada iteracion*/
             aux += (c1.posElemento(i).getId()+" "+ c1.posElemento(i).getDescripcion()
                     +("\n"));

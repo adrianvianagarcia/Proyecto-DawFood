@@ -40,6 +40,7 @@ public class ProductoCarrito {
         this.descripcion = "";
         this.iva = 0.0;
         this.cantidad = 0;
+        this.id = 0;
     }
 
     public TipoProducto getTipo() {
