@@ -7,6 +7,6 @@ public class Main {
         Tpv tpv =new Tpv("Estepona");
 
         tpv.encenderTPV();
-      
+        
     }
 }

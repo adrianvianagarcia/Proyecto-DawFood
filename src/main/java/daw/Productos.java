@@ -10,14 +10,16 @@ public class Productos {
     private String descripcion;
     private int id;
     private double iva;
+    private int stock;
 
-    public Productos(TipoProducto tipo, Consumibles consumible, double precioBase, String descripcion, int id, double iva) {
+    public Productos(TipoProducto tipo, Consumibles consumible, double precioBase, String descripcion, int id, double iva, int stock) {
         this.tipo = tipo;
         this.consumible = consumible;
         this.precioBase = precioBase;
         this.descripcion = descripcion;
         this.id = id;
         this.iva = iva;
+        this.stock = stock;
     }
 
     public Productos() {
@@ -70,6 +72,14 @@ public class Productos {
 
     public void setId(int id) {
         this.id = id;
+    }
+    
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 
     @Override
