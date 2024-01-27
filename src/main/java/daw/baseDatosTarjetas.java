@@ -14,8 +14,5 @@ public class baseDatosTarjetas {
     
     ArrayList<TarjetasDeCredito> baseDatosTarjetas = new ArrayList<>();
     
-    public void guardarElemento(TarjetasDeCredito tarjeta) {
-        baseDatosTarjetas.add(tarjeta);
-    }
     
 }

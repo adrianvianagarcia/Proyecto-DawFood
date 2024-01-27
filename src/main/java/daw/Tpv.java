@@ -233,7 +233,7 @@ public class Tpv {
                                 Integer opcionCarrito = MenusDeOpciones.selectorCarrito();
                                 switch (opcionCarrito) {
                                     case 0 -> {//Ver carrito
-                                        System.out.println(carrito);
+                                        JOptionPane.showMessageDialog(null,Metodos.mostrarProductoCarrito(carrito.carrito));
                                     }
                                     case 1 -> {//Borrar producto carrito
                                         carrito.ordenarPorId();
