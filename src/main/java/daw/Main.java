@@ -5,7 +5,7 @@ public class Main {
 
         //Encendemos el tpv//
         Tpv tpv =new Tpv("Estepona");
-        
+
         tpv.encenderTPV();
       
     }

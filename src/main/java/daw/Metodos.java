@@ -26,9 +26,9 @@ public class Metodos {
     public static boolean pasarelaDePago(ArrayList<TarjetasDeCredito> baseDatosTarjetas) {
         boolean compraValida = false;
         for (int i = 0; i < baseDatosTarjetas.size(); i++) {
-            if (baseDatosTarjetas.get(i).verificarNumeroTarjeta(baseDatosTarjetas, MenusDeOpciones.solicitarCVV()) == true) {
-                if (baseDatosTarjetas.get(i).verificarCVV(baseDatosTarjetas, 88) == true) {
-                    if (baseDatosTarjetas.get(i).verificarFechaCaducidad(baseDatosTarjetas,null)==true) {
+            if (baseDatosTarjetas.get(i).verificarNumeroTarjeta(baseDatosTarjetas, MenusDeOpciones.solicitarNumTarjeta()) == true) {
+                if (baseDatosTarjetas.get(i).verificarCVV(baseDatosTarjetas, MenusDeOpciones.solicitarCVV()) == true) {
+                    if (baseDatosTarjetas.get(i).verificarFechaCaducidad(baseDatosTarjetas,MenusDeOpciones.solicitarFechaCaducidad())==true) {
                         compraValida=true;
                         break;
                     }

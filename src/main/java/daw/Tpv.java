@@ -1,5 +1,6 @@
 package daw;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -55,6 +56,20 @@ public class Tpv {
     }
 
     public void encenderTPV() throws InterruptedException {
+        final int diaMes=1;
+        //creamos todas las tarjetas
+        TarjetasDeCredito t1 = new TarjetasDeCredito(7785, LocalDate.of(2027, 9, diaMes), 987, "Óscar Morales", 200.00);
+        TarjetasDeCredito t2 = new TarjetasDeCredito(0000, LocalDate.of(2027, 12, diaMes), 000, "Adrian Viana", 100.00);
+        TarjetasDeCredito t3=new TarjetasDeCredito(8956, LocalDate.of(2027, 5, diaMes), 899, "Jose antonio acebedo", 59.95);
+        TarjetasDeCredito t4 = new TarjetasDeCredito(1234, LocalDate.of(2027, 7, diaMes), 123, "Vico", 100.00);
+        TarjetasDeCredito t5 = new TarjetasDeCredito(4567, LocalDate.of(2027, 1, diaMes), 456, "Eva María", 25.00);
+        //creamos su BBDD
+        baseDatosTarjetas BBDDTarjetas=new baseDatosTarjetas();
+        BBDDTarjetas.baseDatosTarjetas.add(t1);
+        BBDDTarjetas.baseDatosTarjetas.add(t2);
+        BBDDTarjetas.baseDatosTarjetas.add(t3);
+        BBDDTarjetas.baseDatosTarjetas.add(t4);
+        BBDDTarjetas.baseDatosTarjetas.add(t5);
         //Creamos todos los productos
         Productos hamburguesaSimple = new Productos(TipoProducto.COMIDA, Consumibles.HAMBURGUESA,
                 3.5, "Hamburguesa simple", 1, 0.1);

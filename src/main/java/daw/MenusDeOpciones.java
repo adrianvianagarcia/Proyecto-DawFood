@@ -4,8 +4,13 @@
  */
 package daw;
 
+import java.time.DateTimeException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 /**
@@ -161,7 +166,7 @@ public class MenusDeOpciones {
         do{
             do{
                 try{
-                    cvv = (JOptionPane.showInputDialog("introduzca su cvv" + "(\n)" + " (tenga en cuenta que solo son tres digitos)"));
+                    cvv = (JOptionPane.showInputDialog("introduzca su cvv" + "\n" + " (tenga en cuenta que solo son tres digitos)"));
                     Cvv=Integer.parseInt(cvv);
                     errorCvv=false;
                 }catch(NumberFormatException nfe){
@@ -171,6 +176,58 @@ public class MenusDeOpciones {
         }while(cvv.length()!=3);
         
         return Cvv;
+    }
+    
+    public static int solicitarNumTarjeta() {
+        int NumTarjeta = 0;
+        String numTarjeta = " ";
+        boolean errorCvv = true;
+        do {
+            do {
+                try {
+                    numTarjeta = (JOptionPane.showInputDialog("introduzca su número de la tarjeta" + 
+                            "\n" + " (tenga en cuenta que solo son los 4 últimos dígitos)"));
+                    NumTarjeta = Integer.parseInt(numTarjeta);
+                    errorCvv = false;
+                } catch (NumberFormatException nfe) {
+                    JOptionPane.showMessageDialog(null, "No has introducido valores numéricos" + "(\n)" + "Intentelo de nuevo");
+                }
+            } while (errorCvv);
+        } while (numTarjeta.length() != 4);
+
+        return NumTarjeta;
+    }
+    
+    public static LocalDate solicitarFechaCaducidad() {
+        //inicializamos variables para que el programa funcione
+        LocalDate reserva = null;
+        boolean errorFecha = true;
+        int año = -125;
+        int mes = 50;
+        boolean errorFechaInt=true;
+        //entrada de datos
+        do{
+            do{
+                try {
+                    año = Integer.parseInt(JOptionPane.showInputDialog("Introduzca el año de su fecha de caducidad"));
+                    mes = Integer.parseInt(JOptionPane.showInputDialog("Introduzca el mes de su fecha de caducidad"));
+                    errorFechaInt=false;
+                } catch (NumberFormatException nfe) {
+                    JOptionPane.showMessageDialog(null, "Ha introducido un caracter no númnerico");
+                    errorFechaInt=true;
+                }
+            }while(errorFechaInt);
+        //creacion de la fecha
+                try {
+                    reserva = LocalDate.of(año,mes,1);
+                    errorFecha = false;
+                } catch (DateTimeException dte) {
+                    JOptionPane.showMessageDialog(null,"No ha introducido una fecha correcta");
+                    errorFecha=true;
+                }
+
+        } while (año<0||(mes<0||mes>12));
+        return reserva;
     }
 
 }
