@@ -10,9 +10,9 @@ public class Productos {
     private String descripcion;
     private int id;
     private double iva;
-    private int stock;
+    private boolean stock;
 
-    public Productos(TipoProducto tipo, Consumibles consumible, double precioBase, String descripcion, int id, double iva, int stock) {
+    public Productos(TipoProducto tipo, Consumibles consumible, double precioBase, String descripcion, int id, double iva, boolean stock) {
         this.tipo = tipo;
         this.consumible = consumible;
         this.precioBase = precioBase;
@@ -74,11 +74,11 @@ public class Productos {
         this.id = id;
     }
     
-    public int getStock() {
+    public boolean getStock() {
         return stock;
     }
 
-    public void setStock(int stock) {
+    public void setStock(boolean stock) {
         this.stock = stock;
     }
 

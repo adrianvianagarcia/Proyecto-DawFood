@@ -25,6 +25,7 @@ public class Carrito {
                 l2.getId()));
     }
 
+    
     public void borrarProductoExistente(int id) {
         ordenarPorId();
         carrito.remove(id);

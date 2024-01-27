@@ -34,6 +34,18 @@ public class Ticket {
         return t1;
     }
 
+    public void estabelecerNumPedido(ArrayList<Ticket> tickets){
+    Random r=new Random();
+    int numPedido=0;
+    for(int i=0;i<tickets.size();i++){
+      do{
+          numPedido = r.nextInt(100,1000);
+          tickets.get(i).setNumeroPedido(numPedido);
+      }while(tickets.get(i).getNumeroPedido()!=numPedido);
+     
+    }
+}
+    
     public int getId() {
         return id;
     }

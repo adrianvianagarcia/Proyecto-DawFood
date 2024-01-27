@@ -51,7 +51,7 @@ public class MenusDeOpciones {
         int opcion = JOptionPane.showOptionDialog(null, "¿Qué atributo desea cambiar?",
                 "Selector opciones", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
                 null,
-                new Object[]{"Precio", "Descripcion", "Iva", "Volver"}, null);
+                new Object[]{"Precio", "Descripcion", "Iva","Stock", "Volver"}, null);
         return opcion;
     }
 
@@ -142,17 +142,20 @@ public class MenusDeOpciones {
         return opcion;
     }
 
-    public static ProductoCarrito selectorProducto(int idProducto, Catalogo catalogo, int cantidad) {
+    public static ProductoCarrito selectorProducto(int idProducto, Catalogo catalogo) {
         ProductoCarrito producto = new ProductoCarrito();
+        int IdProducto=idProducto;
         //busca el porducto y lo guarda en uno de tipo ProductoCarrito
         for (int i = 0; i < catalogo.tamañoCatalogo(); i++) {
-            if (catalogo.posElemento(i).getId() == idProducto) {
+            if (catalogo.posElemento(i).getStock()== true&&catalogo.posElemento(i).getId()==idProducto) {
                 producto.setPrecioBase(catalogo.catalogo.get(i).getPrecioBase());
                 producto.setConsumible(catalogo.catalogo.get(i).getConsumible());
                 producto.setDescripcion(catalogo.catalogo.get(i).getDescripcion());
                 producto.setIva(catalogo.catalogo.get(i).getIva());
-                producto.setCantidad(cantidad);
-                producto.setPrecioTotal(cantidad * producto.getPrecioBase());
+//                producto.setCantidad(cantidad);
+//                producto.setPrecioTotal(cantidad * producto.getPrecioBase());
+            }else{
+                
             }
 
         }

@@ -10,42 +10,42 @@ import javax.swing.JOptionPane;
 import org.apache.commons.lang3.RandomStringUtils;
 
 public class Tpv {
-    
+
     private final UUID numeroDeSerie;
     private String localizacion;
     private final LocalDateTime fechaActual;
     private final String contraseña;
-    
+
     public Tpv(String localizacion) {
         this.numeroDeSerie = UUID.randomUUID();
         this.localizacion = localizacion;
         this.fechaActual = LocalDateTime.now();
         this.contraseña = generarContraseña();
     }
-    
+
     public String generarContraseña() {
-        
+
         Random r = new Random();
-        
+
         char minuscula = (char) r.nextInt(97, 123);
         char mayuscula = (char) r.nextInt(65, 91);
         char numero = (char) r.nextInt(48, 58);
         String caracterEspecial = RandomStringUtils.random(1, '#', '$',
                 '%', '&', '(', ')', '*', '+', '-', '.',
                 ':', ';', '<', '=', '>', '@');
-        
+
         String caracter5y6 = RandomStringUtils.randomNumeric(2);
-        
+
         String caracter1 = Character.toString(minuscula);
         String caracter2 = Character.toString(mayuscula);
         String caracter3 = Character.toString(numero);
-        
+
         String contraseña = caracter1 + caracter2 + caracter3 + caracterEspecial
                 + caracter5y6;
-        
+
         return contraseña;
     }
-    
+
     public boolean verifContraseña(String contraseñaUser, String contraseña) {
         boolean errorContra = true;
         if (contraseñaUser.equals(
@@ -54,11 +54,11 @@ public class Tpv {
         }
         return errorContra;
     }
-    
+
     public void encenderTPV() throws InterruptedException {
         final int diaMes = 1;
         // inicializamos las ventas
-        Ventas ventas =new Ventas();
+        Ventas ventas = new Ventas();
         //creamos todas las tarjetas
         TarjetasDeCredito t1 = new TarjetasDeCredito(7785, LocalDate.of(2027, 9, diaMes), 987, "Óscar Morales", 200.00);
         TarjetasDeCredito t2 = new TarjetasDeCredito(0000, LocalDate.of(2027, 12, diaMes), 000, "Adrian Viana", 100.00);
@@ -74,55 +74,55 @@ public class Tpv {
         BBDDTarjetas.baseDatosTarjetas.add(t5);
         //Creamos todos los productos
         Productos hamburguesaSimple = new Productos(TipoProducto.COMIDA, Consumibles.HAMBURGUESA,
-                3.5, "Hamburguesa simple", 1, 0.1, 100);
-        
+                3.5, "Hamburguesa simple", 1, 0.1, true);
+
         Productos hamburguesaQueso = new Productos(TipoProducto.COMIDA, Consumibles.HAMBURGUESA,
-                4, "Hamburguesa con queso", 2, 0.1, 100);
-        
+                4, "Hamburguesa con queso", 2, 0.1, true);
+
         Productos kebabSimple = new Productos(TipoProducto.COMIDA, Consumibles.KEBAB,
-                4, "Kebab simple", 3, 0.1, 100);
-        
+                4, "Kebab simple", 3, 0.1, true);
+
         Productos tacoFrances = new Productos(TipoProducto.COMIDA, Consumibles.KEBAB,
-                4, "Taco frances", 4, 0.1, 100);
-        
+                4, "Taco frances", 4, 0.1, true);
+
         Productos pizzaMargarita = new Productos(TipoProducto.COMIDA, Consumibles.PIZZA,
-                5, "Pizza margarita", 5, 0.1, 100);
-        
+                5, "Pizza margarita", 5, 0.1, true);
+
         Productos pizzaQueso = new Productos(TipoProducto.COMIDA, Consumibles.PIZZA,
-                4, "Pizza de queso", 6, 0.1, 100);
-        
+                4, "Pizza de queso", 6, 0.1, true);
+
         Productos cocaCola = new Productos(TipoProducto.BEBIDA, Consumibles.REFRESCO,
-                2, "Coca-Cola", 7, 0.21, 100);
-        
+                2, "Coca-Cola", 7, 0.21, true);
+
         Productos fantaNaranja = new Productos(TipoProducto.BEBIDA, Consumibles.REFRESCO,
-                2, "Fanta de Naranja", 8, 0.21, 100);
-        
+                2, "Fanta de Naranja", 8, 0.21, true);
+
         Productos cervezaMahou = new Productos(TipoProducto.BEBIDA, Consumibles.CERVEZA,
-                2.5, "Cerveza Mahou", 9, 0.21, 100);
-        
+                2.5, "Cerveza Mahou", 9, 0.21, true);
+
         Productos cervezaHeineken = new Productos(TipoProducto.BEBIDA, Consumibles.CERVEZA,
-                2.5, "Cerveza Heineken", 10, 0.21, 100);
-        
+                2.5, "Cerveza Heineken", 10, 0.21, true);
+
         Productos agua = new Productos(TipoProducto.BEBIDA, Consumibles.AGUA,
-                1.5, "Agua", 11, 0.1, 100);
-        
+                1.5, "Agua", 11, 0.1, true);
+
         Productos tartaQueso = new Productos(TipoProducto.POSTRE, Consumibles.BOLLERIA,
-                4, "Tarta de Queso", 12, 0.1, 100);
-        
+                4, "Tarta de Queso", 12, 0.1, true);
+
         Productos donut = new Productos(TipoProducto.POSTRE, Consumibles.BOLLERIA,
-                3, "Donut Glasé", 13, 0.1, 100);
-        
+                3, "Donut Glasé", 13, 0.1, true);
+
         Productos platano = new Productos(TipoProducto.POSTRE, Consumibles.FRUTA,
-                0.5, "Platano", 14, 0.1, 100);
-        
+                0.5, "Platano", 14, 0.1, true);
+
         Productos manzana = new Productos(TipoProducto.POSTRE, Consumibles.FRUTA,
-                0.5, "Manzana", 15, 0.1, 100);
-        
+                0.5, "Manzana", 15, 0.1, true);
+
         Productos yogurCoco = new Productos(TipoProducto.POSTRE, Consumibles.YOGURES,
-                1.25, "Yogur de coco", 16, 0.1, 100);
-        
+                1.25, "Yogur de coco", 16, 0.1, true);
+
         Productos yogurFresa = new Productos(TipoProducto.POSTRE, Consumibles.YOGURES,
-                1.25, "Yogur de fresa", 17, 0.1, 100);
+                1.25, "Yogur de fresa", 17, 0.1, true);
 
         /*Creo un arrayList de mis objectos*/
         Catalogo catalogo = new Catalogo();
@@ -152,9 +152,9 @@ public class Tpv {
         /*intento de gestion de error*/
         boolean errorUser = true;
         do {
-            
+
             user = MenusDeOpciones.selectorDeUsuarios();
-            
+
             if (user != null) {
                 if (user.equals("Cliente")) {
                     int opcionMenu;
@@ -171,7 +171,7 @@ public class Tpv {
                                     case 0 -> {//hamburguesas
                                         String menuHamburguesa = mostrarProductosPorCategoria(Consumibles.HAMBURGUESA, catalogo);
                                         añadirProducto(menuHamburguesa, catalogo, carrito);
-                                        
+
                                     }
                                     case 1 -> {//Pizzas
                                         String menuHamburguesa = mostrarProductosPorCategoria(Consumibles.PIZZA, catalogo);
@@ -186,7 +186,7 @@ public class Tpv {
                                     }
                                 }
                             }
-                            
+
                             case 1 -> {//bebida
                                 int productoElegido = MenusDeOpciones.selectorBebidas();
                                 switch (productoElegido) {
@@ -210,7 +210,7 @@ public class Tpv {
                                     }
                                 }
                             }
-                            
+
                             case 2 -> {//postres
                                 int productoElegido = MenusDeOpciones.selectorPostres();
                                 switch (productoElegido) {
@@ -257,32 +257,33 @@ public class Tpv {
                                                 break;
                                             }
                                         }
-                                        
+
                                         carrito.borrarProductoExistente(i);
                                     }
                                     case 2 -> {//Pagar el pedido
-                                        
+
                                         TarjetasDeCredito tarjetaCliente = Metodos.pasarelaDePago(BBDDTarjetas.baseDatosTarjetas);
                                         double precioTotal = carrito.precioTotal();
-                                        if(tarjetaCliente.getSaldo()<precioTotal){
+                                        if (tarjetaCliente.getSaldo() < precioTotal) {
                                             carrito.carrito.clear();
-                                            JOptionPane.showMessageDialog(null,"No tienes fondos suficientes para realizar la compra");
+                                            JOptionPane.showMessageDialog(null, "No tienes fondos suficientes para realizar la compra");
                                             break;
                                         }
-                                        tarjetaCliente.setSaldo(tarjetaCliente.getSaldo() - precioTotal);    
+                                        tarjetaCliente.setSaldo(tarjetaCliente.getSaldo() - precioTotal);
                                         Ticket ticket = new Ticket();
                                         ticket.generadorDeTicket(ticket, carrito);
                                         ventas.ventas.add(ticket);
                                         ticket.setId(ventas.tamañoVentas());
-                                        ticket.setNumeroPedido(0);
+                                        ticket.estabelecerNumPedido(ventas.ventas);
+
                                         carrito.carrito.clear();
-                                        
+
                                     }
                                     case 3 -> {//Cancelar pedido
                                         carrito.carrito.clear();
                                     }
                                     case 4 -> {//volver
-                                        
+
                                         break;
                                     }
                                 }
@@ -292,7 +293,7 @@ public class Tpv {
                             }
                         }
                     } while (opcionMenu != 4);
-                    
+
                 } else if (user.equals("Administrador")) {
                     carrito.carrito.clear();
                     String contraseña = generarContraseña();
@@ -327,7 +328,7 @@ public class Tpv {
                                         break;
                                     }
                                 }
-                                
+
                                 switch (opcion) {
                                     case 0 -> {
                                         double precioNuevo = 0;
@@ -348,13 +349,13 @@ public class Tpv {
                                         } while (precioNuevo <= 0);
                                         catalogo.posElemento(i).setPrecioBase(precioNuevo);
                                     }
-                                    
+
                                     case 1 -> {
                                         String descripcionNueva = JOptionPane.showInputDialog(null,
                                                 "¿Cual va a ser la nueva descripcion?");
                                         catalogo.posElemento(i).setDescripcion(descripcionNueva);
                                     }
-                                    
+
                                     case 2 -> {
                                         double ivaNuevo = 0;
                                         boolean repetir;
@@ -372,10 +373,33 @@ public class Tpv {
                                         } while (repetir);
                                         catalogo.posElemento(i).setIva(ivaNuevo);
                                     }
+
+                                    case 3 -> {
+                                        int cambiarEstado = 0;
+
+                                        cambiarEstado = JOptionPane.showOptionDialog(null, "¿cual va a ser el nuevo estado del stock?",
+                                                "Selector de estado de stock", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
+                                                null,
+                                                new Object[]{"Hay stock", "Sin stock", "Volver"}, null);
+                                        switch (cambiarEstado) {
+                                            case 0 -> {
+                                                catalogo.posElemento(i).setStock(true);
+                                                break;
+                                            }
+                                            case 1 -> {
+                                                catalogo.posElemento(i).setStock(false);
+                                                break;
+                                            }
+                                            case 2 -> {
+                                                break;
+                                            }
+                                        }
+
+                                    }
                                 }
-                                
+
                             }
-                            
+
                             case 1 -> {//nuevoProducto
                                 Productos p1 = new Productos();
                                 int opcionMenuTipoProducto = MenusDeOpciones.selectorDeProductoAdmin();
@@ -441,11 +465,11 @@ public class Tpv {
                                                 pedirDatosProducto(p1, catalogo);
                                                 catalogo.guardarElemento(p1);
                                             }
-                                            
+
                                         }
-                                        
+
                                     }
-                                    
+
                                 }
                             }
                             case 2 -> {//borrarProducto
@@ -467,18 +491,18 @@ public class Tpv {
                                         break;
                                     }
                                 }
-                                
+
                                 catalogo.borrarProductoExistente(i);
-                                
+
                             }
-                            
+
                             case 3 -> {//consultarVeentas
 
                             }
                             case 4 -> {//volver
                                 break;
                             }
-                            
+
                         }
                     } while (opcionMenu != 4);
                 } else {
@@ -495,29 +519,29 @@ public class Tpv {
                     errorUser = false;
                     break;
                 } else {
-                    
+
                     errorUser = false;
                 }
-                
+
             }
         } while (user != "Apagar TPV");
-        
+
     }
-    
+
     public void apagarTVP() throws InterruptedException {
         JOptionPane.showMessageDialog(null, "Se apagará el TPV");
     }
-    
+
     public String mostrarProductosPorCategoria(Consumibles c1, Catalogo catalogo) {
         String aux = "";
         for (int i = 0; i < catalogo.tamañoCatalogo(); i++) {
-            if (catalogo.posElemento(i).getConsumible().equals(c1)) {
+            if (catalogo.posElemento(i).getConsumible().equals(c1) && catalogo.posElemento(i).getStock() == true) {
                 aux += (catalogo.posElemento(i) + ("\n"));
             }
         }
         return aux;
     }
-    
+
     public void pedirDatosProducto(Productos p1, Catalogo c1) {
         double precio = 0;
         boolean repetir;
@@ -536,10 +560,10 @@ public class Tpv {
             } while (repetir);
         } while (precio <= 0);
         p1.setPrecioBase(precio);
-        
+
         String descripcion = JOptionPane.showInputDialog(null, "Introduzca la descripcion");
         p1.setDescripcion(descripcion);
-        
+
         double iva = 0;
         do {
             try {
@@ -554,29 +578,39 @@ public class Tpv {
             }
         } while (repetir);
         p1.setIva(iva);
-        
+
         p1.setId(c1.tamañoCatalogo() + 1);
     }
-    
+
     public void añadirProducto(String menu, Catalogo catalogo, Carrito carrito) {
-        
+
         int producto = 0;
+        ProductoCarrito p1;
         do {
-            try {
-                producto = Integer.parseInt(
-                        JOptionPane.showInputDialog(null,
-                                menu));
-            } catch (NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(null,
-                        "Introduzca una opcion valida");
+            do {
+                try {
+                    producto = Integer.parseInt(
+                            JOptionPane.showInputDialog(null,
+                                    menu));
+                } catch (NumberFormatException nfe) {
+                    JOptionPane.showMessageDialog(null,
+                            "Introduzca una opcion valida");
+                }
+            } while (producto <= 0 || producto > catalogo.tamañoCatalogo());
+
+            p1 = (MenusDeOpciones.selectorProducto(producto, catalogo));
+            if ((p1.getConsumible()==(catalogo.posElemento(producto).getConsumible()))==true && catalogo.posElemento(producto).getStock() ==true) {
+                carrito.guardarElemento(p1);
+            } else {
+                JOptionPane.showMessageDialog(null, "¡Oh no!, parece que has escogido un producto que no esta ofertado");
             }
-        } while (producto <= 0 || producto > catalogo.tamañoCatalogo());
+        } while (catalogo.posElemento(producto).getStock() != true);
         int cantidad = MenusDeOpciones.selectorDeCantidad();
-        ProductoCarrito p1 = (MenusDeOpciones.selectorProducto(producto, catalogo, cantidad));
-        carrito.guardarElemento(p1);
         p1.setId(carrito.tamañoCarrito());
+        p1.setCantidad(cantidad);
+        p1.setPrecioTotal(p1.getPrecioBase()*cantidad);
     }
-    
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -588,5 +622,5 @@ public class Tpv {
         sb.append('}');
         return sb.toString();
     }
-    
+
 }
