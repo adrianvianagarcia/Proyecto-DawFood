@@ -298,6 +298,7 @@ public class Tpv {
                                     case 0 -> {
                                         double precioNuevo = 0;
                                         boolean repetir;
+                                        do{
                                         do {
                                             try {
                                                 precioNuevo = Double.parseDouble(
@@ -310,6 +311,7 @@ public class Tpv {
                                                 repetir = true;
                                             }
                                         } while (repetir);
+                                        } while (precioNuevo <= 0);
                                         catalogo.posElemento(i).setPrecioBase(precioNuevo);
                                     }
 
@@ -444,7 +446,7 @@ public class Tpv {
                             }
 
                         }
-                    } while (opcionMenu != 4);//
+                    } while (opcionMenu != 4);
                 } else {
                     apagarTVP();
                 }
@@ -485,6 +487,7 @@ public class Tpv {
     public void pedirDatosProducto(Productos p1, Catalogo c1) {
         double precio = 0;
         boolean repetir;
+        do{
         do {
             try {
                 precio = Double.parseDouble(
@@ -497,6 +500,7 @@ public class Tpv {
                 repetir = true;
             }
         } while (repetir);
+        } while (precio <= 0);
         p1.setPrecioBase(precio);
 
         String descripcion = JOptionPane.showInputDialog(null, "Introduzca la descripcion");
