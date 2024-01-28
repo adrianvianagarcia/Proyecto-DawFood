@@ -320,7 +320,6 @@ public class Tpv {
                     } while (opcionMenu != 4);
 
                 } else if (user.equals("Administrador")) {
-                    carrito.carrito.clear();
                     String contraseña = generarContraseña();
                     System.out.println("La contraseña del TPV es: " + contraseña);
                     String contraseñaUser;
@@ -605,7 +604,16 @@ public class Tpv {
             }
         } while (repetir);
         p1.setIva(iva);
-
+        Integer cambiarEstado = JOptionPane.showOptionDialog(null, "Establezca el stock del producto",
+                "Selector de estado de stock", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
+                null,
+                new Object[]{"Hay stock", "Sin stock"}, null);
+        if(cambiarEstado.equals(0)){
+            p1.setStock(true);
+        }else{
+            p1.setStock(false);
+        }
+        
         p1.setId(c1.tamañoCatalogo() + 1);
     }
 
