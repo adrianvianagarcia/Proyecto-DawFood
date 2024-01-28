@@ -23,6 +23,16 @@ public class Metodos {
         }
         return aux;
     }
+    
+    public static ArrayList<Integer> restriccionProducto(Catalogo catalogo,Consumibles consumible){
+        ArrayList<Integer> numValidos=new ArrayList<>();
+        for (int i = 0; i < catalogo.tamañoCatalogo(); i++) {
+            if ((catalogo.posElemento(i).getConsumible()==consumible)&&catalogo.posElemento(i).getStock()==true) {
+                numValidos.add(i+1);
+            }
+        }
+        return numValidos;
+    }
 
     public static String mostrarProductoCarrito(ArrayList<ProductoCarrito> lista) {
         String aux = "";

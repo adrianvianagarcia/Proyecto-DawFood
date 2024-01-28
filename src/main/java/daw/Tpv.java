@@ -168,18 +168,25 @@ public class Tpv {
                                     productoElegido = 3;
                                 }
                                 switch (productoElegido) {
+                                    
                                     case 0 -> {//hamburguesas
+                                        ArrayList<Integer> numValidos=new ArrayList();
+                                        numValidos=Metodos.restriccionProducto(catalogo, Consumibles.HAMBURGUESA);
                                         String menuHamburguesa = mostrarProductosPorCategoria(Consumibles.HAMBURGUESA, catalogo);
-                                        añadirProducto(menuHamburguesa, catalogo, carrito);
+                                        añadirProducto(menuHamburguesa, catalogo, carrito,numValidos);
 
                                     }
                                     case 1 -> {//Pizzas
+                                        ArrayList<Integer> numValidos=new ArrayList();
+                                         numValidos=Metodos.restriccionProducto(catalogo, Consumibles.PIZZA);
                                         String menuHamburguesa = mostrarProductosPorCategoria(Consumibles.PIZZA, catalogo);
-                                        añadirProducto(menuHamburguesa, catalogo, carrito);
+                                        añadirProducto(menuHamburguesa, catalogo, carrito,numValidos);
                                     }
                                     case 2 -> {//kebabs
+                                        ArrayList<Integer> numValidos=new ArrayList();
+                                         numValidos=Metodos.restriccionProducto(catalogo, Consumibles.KEBAB);
                                         String menuHamburguesa = mostrarProductosPorCategoria(Consumibles.KEBAB, catalogo);
-                                        añadirProducto(menuHamburguesa, catalogo, carrito);
+                                        añadirProducto(menuHamburguesa, catalogo, carrito,numValidos);
                                     }
                                     case 3 -> {//volver
                                         break;
@@ -191,16 +198,22 @@ public class Tpv {
                                 int productoElegido = MenusDeOpciones.selectorBebidas();
                                 switch (productoElegido) {
                                     case 0 -> {//refrescos
+                                        ArrayList<Integer> numValidos=new ArrayList();
+                                         numValidos=Metodos.restriccionProducto(catalogo, Consumibles.REFRESCO);
                                         String menuHamburguesa = mostrarProductosPorCategoria(Consumibles.REFRESCO, catalogo);
-                                        añadirProducto(menuHamburguesa, catalogo, carrito);
+                                        añadirProducto(menuHamburguesa, catalogo, carrito,numValidos);
                                     }
                                     case 1 -> {//Cervezas
+                                        ArrayList<Integer> numValidos=new ArrayList();
+                                         numValidos=Metodos.restriccionProducto(catalogo, Consumibles.CERVEZA);
                                         String menuHamburguesa = mostrarProductosPorCategoria(Consumibles.CERVEZA, catalogo);
-                                        añadirProducto(menuHamburguesa, catalogo, carrito);
+                                        añadirProducto(menuHamburguesa, catalogo, carrito,numValidos);
                                     }
                                     case 2 -> {//Agua
+                                        ArrayList<Integer> numValidos=new ArrayList();
+                                         numValidos=Metodos.restriccionProducto(catalogo, Consumibles.AGUA);
                                         String menuHamburguesa = mostrarProductosPorCategoria(Consumibles.AGUA, catalogo);
-                                        añadirProducto(menuHamburguesa, catalogo, carrito);
+                                        añadirProducto(menuHamburguesa, catalogo, carrito,numValidos);
                                     }
                                     case 3 -> {//volver
                                         break;
@@ -215,16 +228,22 @@ public class Tpv {
                                 int productoElegido = MenusDeOpciones.selectorPostres();
                                 switch (productoElegido) {
                                     case 0 -> {//frutas
+                                        ArrayList<Integer> numValidos=new ArrayList();
+                                         numValidos=Metodos.restriccionProducto(catalogo, Consumibles.FRUTA);
                                         String menuHamburguesa = mostrarProductosPorCategoria(Consumibles.FRUTA, catalogo);
-                                        añadirProducto(menuHamburguesa, catalogo, carrito);
+                                        añadirProducto(menuHamburguesa, catalogo, carrito,numValidos);
                                     }
                                     case 1 -> {//bolleria
+                                        ArrayList<Integer> numValidos=new ArrayList();
+                                         numValidos=Metodos.restriccionProducto(catalogo, Consumibles.BOLLERIA);
                                         String menuHamburguesa = mostrarProductosPorCategoria(Consumibles.BOLLERIA, catalogo);
-                                        añadirProducto(menuHamburguesa, catalogo, carrito);
+                                        añadirProducto(menuHamburguesa, catalogo, carrito,numValidos);
                                     }
                                     case 2 -> {//yogures
+                                        ArrayList<Integer> numValidos=new ArrayList();
+                                         numValidos=Metodos.restriccionProducto(catalogo, Consumibles.YOGURES);
                                         String menuHamburguesa = mostrarProductosPorCategoria(Consumibles.YOGURES, catalogo);
-                                        añadirProducto(menuHamburguesa, catalogo, carrito);
+                                        añadirProducto(menuHamburguesa, catalogo, carrito,numValidos);
                                     }
                                     case 3 -> {//volver
                                         break;
@@ -232,65 +251,70 @@ public class Tpv {
                                 }
                             }
                             case 3 -> {//carrito
-                                Integer opcionCarrito = MenusDeOpciones.selectorCarrito();
-                                switch (opcionCarrito) {
-                                    case 0 -> {//Ver carrito
-                                        JOptionPane.showMessageDialog(null, Metodos.mostrarProductoCarrito(carrito.carrito));
-                                    }
-                                    case 1 -> {//Borrar producto carrito
-                                        carrito.ordenarPorId();
-                                        String listaProductosCarrito = Carrito.mostrarProducto(carrito);
-                                        int eleccion = 0;
-                                        do {
-                                            try {
-                                                eleccion = Integer.parseInt(
-                                                        JOptionPane.showInputDialog(null,
-                                                                listaProductosCarrito));
-                                            } catch (NumberFormatException nfe) {
-                                                JOptionPane.showMessageDialog(null,
-                                                        "Introduzca una opcion valida");
+                                Integer opcionCarrito=0;
+                                do{
+                                    opcionCarrito = MenusDeOpciones.selectorCarrito();
+                                    switch (opcionCarrito) {
+                                        case 0 -> {//Ver carrito
+                                            JOptionPane.showMessageDialog(null, Metodos.mostrarProductoCarrito(carrito.carrito));
+                                        }
+                                        case 1 -> {//Borrar producto carrito
+                                            carrito.ordenarPorId();
+                                            String listaProductosCarrito = Carrito.mostrarProducto(carrito);
+                                            int eleccion = 0;
+                                            do {
+                                                try {
+                                                    eleccion = Integer.parseInt(
+                                                            JOptionPane.showInputDialog(null,
+                                                                    listaProductosCarrito));
+                                                } catch (NumberFormatException nfe) {
+                                                    JOptionPane.showMessageDialog(null,
+                                                            "Introduzca una opcion valida");
+                                                }
+                                            } while (eleccion <= 0 || eleccion > carrito.tamañoCarrito());
+                                            int i;
+                                            for (i = 0; i < carrito.tamañoCarrito(); i++) {
+                                                if (eleccion == (carrito.posElemento(i).getId())) {
+                                                    break;
+                                                }
                                             }
-                                        } while (eleccion <= 0 || eleccion > carrito.tamañoCarrito());
-                                        int i;
-                                        for (i = 0; i < carrito.tamañoCarrito(); i++) {
-                                            if (eleccion == (carrito.posElemento(i).getId())) {
+
+                                            carrito.borrarProductoExistente(i);
+                                        }
+                                        case 2 -> {//Pagar el pedido
+
+                                            TarjetasDeCredito tarjetaCliente = Metodos.pasarelaDePago(BBDDTarjetas.baseDatosTarjetas);
+                                            double precioTotal = carrito.precioTotal();
+                                            if (tarjetaCliente.getSaldo() < precioTotal) {
+                                                carrito.carrito.clear();
+                                                JOptionPane.showMessageDialog(null, "No tienes fondos suficientes para realizar la compra");
                                                 break;
                                             }
-                                        }
+                                            tarjetaCliente.setSaldo(tarjetaCliente.getSaldo() - precioTotal);
+                                            Ticket ticket = new Ticket();
+                                            ticket.generadorDeTicket(ticket, carrito);
+                                            ventas.ventas.add(ticket);
+                                            ticket.setId(ventas.tamañoVentas());
+                                            ticket.estabelecerNumPedido(ventas.ventas);
 
-                                        carrito.borrarProductoExistente(i);
-                                    }
-                                    case 2 -> {//Pagar el pedido
-
-                                        TarjetasDeCredito tarjetaCliente = Metodos.pasarelaDePago(BBDDTarjetas.baseDatosTarjetas);
-                                        double precioTotal = carrito.precioTotal();
-                                        if (tarjetaCliente.getSaldo() < precioTotal) {
                                             carrito.carrito.clear();
-                                            JOptionPane.showMessageDialog(null, "No tienes fondos suficientes para realizar la compra");
+
+                                        }
+                                        case 3 -> {//Cancelar pedido
+                                            carrito.carrito.clear();
+                                        }
+                                        case 4 -> {//volver
+
                                             break;
                                         }
-                                        tarjetaCliente.setSaldo(tarjetaCliente.getSaldo() - precioTotal);
-                                        Ticket ticket = new Ticket();
-                                        ticket.generadorDeTicket(ticket, carrito);
-                                        ventas.ventas.add(ticket);
-                                        ticket.setId(ventas.tamañoVentas());
-                                        ticket.estabelecerNumPedido(ventas.ventas);
-
-                                        carrito.carrito.clear();
-
                                     }
-                                    case 3 -> {//Cancelar pedido
-                                        carrito.carrito.clear();
-                                    }
-                                    case 4 -> {//volver
-
-                                        break;
-                                    }
-                                }
+                                }while(opcionCarrito!=4);
                             }
                             case 4 -> {
+                                carrito.carrito.clear();
                                 break;
                             }
+                                
                         }
                     } while (opcionMenu != 4);
 
@@ -582,11 +606,11 @@ public class Tpv {
         p1.setId(c1.tamañoCatalogo() + 1);
     }
 
-    public void añadirProducto(String menu, Catalogo catalogo, Carrito carrito) {
-
+    public void añadirProducto(String menu, Catalogo catalogo, Carrito carrito,ArrayList<Integer> numValidos) {
         int producto = 0;
-        ProductoCarrito p1;
-        do {
+        boolean idInvalida=true;
+        ProductoCarrito p1 = null;
+            do {
             do {
                 try {
                     producto = Integer.parseInt(
@@ -597,18 +621,19 @@ public class Tpv {
                             "Introduzca una opcion valida");
                 }
             } while (producto <= 0 || producto > catalogo.tamañoCatalogo());
-
-            p1 = (MenusDeOpciones.selectorProducto(producto, catalogo));
-            if ((p1.getConsumible()==(catalogo.posElemento(producto).getConsumible()))==true && catalogo.posElemento(producto).getStock() ==true) {
-                carrito.guardarElemento(p1);
-            } else {
-                JOptionPane.showMessageDialog(null, "¡Oh no!, parece que has escogido un producto que no esta ofertado");
+            for(Integer aux:numValidos){
+                if(aux.equals(producto)){
+                    idInvalida=false;
+                    break;
+                }
             }
-        } while (catalogo.posElemento(producto).getStock() != true);
+        } while (idInvalida);
+        p1=MenusDeOpciones.selectorProducto(producto, catalogo);
         int cantidad = MenusDeOpciones.selectorDeCantidad();
         p1.setId(carrito.tamañoCarrito());
         p1.setCantidad(cantidad);
         p1.setPrecioTotal(p1.getPrecioBase()*cantidad);
+        carrito.carrito.add(p1);
     }
 
     @Override
