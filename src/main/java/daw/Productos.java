@@ -130,6 +130,7 @@ public class Productos {
         sb.append(id);
         sb.append(" ").append(descripcion).append(":");
         sb.append(" Precio: ").append(precioBase).append("€");
+        sb.append(" Iva aplicado al precio: ").append(iva);
         return sb.toString();
     }
 

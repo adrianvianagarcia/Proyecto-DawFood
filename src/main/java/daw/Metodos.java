@@ -5,6 +5,8 @@
 package daw;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -44,11 +46,27 @@ public class Metodos {
         return aux;
     }
 
-    public static String mostrarTicket(ArrayList<Ticket> lista) {
+    public static String mostrarTicketFecha(ArrayList<Ticket> lista, LocalDate fecha) {
+        LocalDateTime Fecha;
         String aux = "";
         for (int i = 0; i < lista.size(); i++) {/*Actualiza mi String y le añade
             todas las palabras en cada iteracion*/
-            aux += (lista.get(i).getId()+" -- "+lista.get(i).getPrecioTotal()+("\n"));
+            Fecha=LocalDateTime.of(fecha, 
+                    LocalTime.of(lista.get(i).fechaPedido.getHour(), 
+                    lista.get(i).fechaPedido.getMinute(), 
+                    lista.get(i).fechaPedido.getSecond(), 
+                    lista.get(i).fechaPedido.getNano()));
+            if(lista.get(i).getFechaPedido().equals(Fecha)){
+                aux += (lista.get(i).toString() + ("\n"));
+            }
+        }
+        return aux;
+    }
+    public static String mostrarAllTickets(ArrayList<Ticket> lista) {
+        String aux = "";
+        for (int i = 0; i < lista.size(); i++) {/*Actualiza mi String y le añade
+            todas las palabras en cada iteracion*/
+                aux += (lista.get(i).toString() +("\n"));
         }
         return aux;
     }

@@ -297,8 +297,9 @@ public class Tpv {
                                             ticket.setId(ventas.tamañoVentas());
                                             ticket.estabelecerNumPedido(ventas.ventas);
                                             JOptionPane.showMessageDialog(null, ticket);
-                                            
                                             carrito.carrito.clear();
+                                            opcionCarrito=4;
+                                            break;
 
                                         }
                                         case 3 -> {//Cancelar pedido
@@ -334,197 +335,39 @@ public class Tpv {
                             case 0 -> {//cambiarProducto
                                 String listaProductosCatalogo = Catalogo.mostrarProducto(catalogo);
                                 int eleccion = 0;
-                                do {
-                                    try {
-                                        eleccion = Integer.parseInt(
-                                                JOptionPane.showInputDialog(null,
-                                                        listaProductosCatalogo));
-                                    } catch (NumberFormatException nfe) {
-                                        JOptionPane.showMessageDialog(null,
-                                                "Introduzca una opcion valida");
-                                    }
-                                } while (eleccion <= 0 || eleccion > catalogo.tamañoCatalogo());
-                                int opcion = 0;
-                                int i;
-                                for (i = 0; i < catalogo.tamañoCatalogo(); i++) {
-                                    if (eleccion == (catalogo.posElemento(i).getId())) {
-                                        opcion = MenusDeOpciones.selectorDeAtributo();
-                                        break;
-                                    }
-                                }
-
-                                switch (opcion) {
-                                    case 0 -> {
-                                        double precioNuevo = 0;
-                                        boolean repetir;
-                                        do {
-                                            do {
-                                                try {
-                                                    precioNuevo = Double.parseDouble(
-                                                            JOptionPane.showInputDialog(null,
-                                                                    "¿Cual va a ser el nuevo precio?"));
-                                                    repetir = false;
-                                                } catch (NumberFormatException nfe) {
-                                                    JOptionPane.showMessageDialog(null,
-                                                            "Introduzca una opcion valida");
-                                                    repetir = true;
-                                                }
-                                            } while (repetir);
-                                        } while (precioNuevo <= 0);
-                                        catalogo.posElemento(i).setPrecioBase(precioNuevo);
-                                    }
-
-                                    case 1 -> {
-                                        String descripcionNueva = JOptionPane.showInputDialog(null,
-                                                "¿Cual va a ser la nueva descripcion?");
-                                        catalogo.posElemento(i).setDescripcion(descripcionNueva);
-                                    }
-
-                                    case 2 -> {
-                                        double ivaNuevo = 0;
-                                        boolean repetir;
-                                        do {
-                                            try {
-                                                ivaNuevo = Double.parseDouble(
-                                                        JOptionPane.showInputDialog(null,
-                                                                "¿Cual va a ser el nuevo iva? (Formato 0.)"));
-                                                repetir = false;
-                                            } catch (NumberFormatException nfe) {
-                                                JOptionPane.showMessageDialog(null,
-                                                        "Introduzca una opcion valida");
-                                                repetir = true;
-                                            }
-                                        } while (repetir);
-                                        catalogo.posElemento(i).setIva(ivaNuevo);
-                                        catalogo.posElemento(i).setPrecioBase(catalogo.posElemento(i)
-                                                .getPrecioBase()+(catalogo.posElemento(i).getPrecioBase()*ivaNuevo));
-                                    }
-
-                                    case 3 -> {
-                                        int cambiarEstado = 0;
-
-                                        cambiarEstado = JOptionPane.showOptionDialog(null, "¿cual va a ser el nuevo estado del stock?",
-                                                "Selector de estado de stock", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
-                                                null,
-                                                new Object[]{"Hay stock", "Sin stock", "Volver"}, null);
-                                        switch (cambiarEstado) {
-                                            case 0 -> {
-                                                catalogo.posElemento(i).setStock(true);
-                                                break;
-                                            }
-                                            case 1 -> {
-                                                catalogo.posElemento(i).setStock(false);
-                                                break;
-                                            }
-                                            case 2 -> {
-                                                break;
-                                            }
-                                        }
-
-                                    }
-                                }
-
+                                MenusDeOpciones.cambiarPorducto(listaProductosCatalogo, eleccion, catalogo);
                             }
 
                             case 1 -> {//nuevoProducto
                                 Productos p1 = new Productos();
                                 int opcionMenuTipoProducto = MenusDeOpciones.selectorDeProductoAdmin();
-                                switch (opcionMenuTipoProducto) {
-                                    case 0 -> {
-                                        p1.setTipo(TipoProducto.COMIDA);
-                                        int opcionMenuComida = MenusDeOpciones.selectorComidasAdmin();
-                                        switch (opcionMenuComida) {
-                                            case 0 -> {
-                                                p1.setConsumible(Consumibles.HAMBURGUESA);
-                                                pedirDatosProducto(p1, catalogo);
-                                                catalogo.guardarElemento(p1);
-                                            }
-                                            case 1 -> {
-                                                p1.setConsumible(Consumibles.PIZZA);
-                                                pedirDatosProducto(p1, catalogo);
-                                                catalogo.guardarElemento(p1);
-                                            }
-                                            case 2 -> {
-                                                p1.setConsumible(Consumibles.KEBAB);
-                                                pedirDatosProducto(p1, catalogo);
-                                                catalogo.guardarElemento(p1);
-                                            }
-                                        }
-                                    }
-                                    case 1 -> {
-                                        p1.setTipo(TipoProducto.BEBIDA);
-                                        int opcionMenuBebida = MenusDeOpciones.selectorBebidasAdmin();
-                                        switch (opcionMenuBebida) {
-                                            case 0 -> {
-                                                p1.setConsumible(Consumibles.REFRESCO);
-                                                pedirDatosProducto(p1, catalogo);
-                                                catalogo.guardarElemento(p1);
-                                            }
-                                            case 1 -> {
-                                                p1.setConsumible(Consumibles.CERVEZA);
-                                                pedirDatosProducto(p1, catalogo);
-                                                catalogo.guardarElemento(p1);
-                                            }
-                                            case 2 -> {
-                                                p1.setConsumible(Consumibles.AGUA);
-                                                pedirDatosProducto(p1, catalogo);
-                                                catalogo.guardarElemento(p1);
-                                            }
-                                        }
-                                    }
-                                    case 2 -> {
-                                        p1.setTipo(TipoProducto.POSTRE);
-                                        int opcionMenuPostre = MenusDeOpciones.selectorPostresAdmin();
-                                        switch (opcionMenuPostre) {
-                                            case 0 -> {
-                                                p1.setConsumible(Consumibles.FRUTA);
-                                                pedirDatosProducto(p1, catalogo);
-                                                catalogo.guardarElemento(p1);
-                                            }
-                                            case 1 -> {
-                                                p1.setConsumible(Consumibles.BOLLERIA);
-                                                pedirDatosProducto(p1, catalogo);
-                                                catalogo.guardarElemento(p1);
-                                            }
-                                            case 2 -> {
-                                                p1.setConsumible(Consumibles.YOGURES);
-                                                pedirDatosProducto(p1, catalogo);
-                                                catalogo.guardarElemento(p1);
-                                            }
-
-                                        }
-
-                                    }
-
-                                }
+                                MenusDeOpciones.menuAñadirProducto(opcionMenuTipoProducto, p1, catalogo);
                             }
                             case 2 -> {//borrarProducto
                                 String listaProductosCatalogo = Catalogo.mostrarProducto(catalogo);
                                 int eleccion = 0;
-                                do {
-                                    try {
-                                        eleccion = Integer.parseInt(
-                                                JOptionPane.showInputDialog(null,
-                                                        listaProductosCatalogo));
-                                    } catch (NumberFormatException nfe) {
-                                        JOptionPane.showMessageDialog(null,
-                                                "Introduzca una opcion valida");
-                                    }
-                                } while (eleccion <= 0 || eleccion > catalogo.tamañoCatalogo());
-                                int i;
-                                for (i = 0; i < catalogo.tamañoCatalogo(); i++) {
-                                    if (eleccion == (catalogo.posElemento(i).getId())) {
-                                        break;
-                                    }
-                                }
-
-                                catalogo.borrarProductoExistente(i);
-
+                                MenusDeOpciones.menuBorrarProducto(eleccion, listaProductosCatalogo, catalogo);
                             }
 
                             case 3 -> {//consultarVeentas
+                                int opcionesFechaVentas = MenusDeOpciones.selectorFechasAdmin();
+                                switch (opcionesFechaVentas) {
+                                    case 0 -> {//Dia concreto
+                                        LocalDate fechaConcreta = MenusDeOpciones.solicitarFechaVenta();
+                                        JOptionPane.showMessageDialog(null,Metodos.mostrarTicketFecha(ventas.ventas, fechaConcreta));
 
+                                    }
+                                    case 1 -> {//Hasta un fecha concreta
+                                        LocalDate fechaConcreta = MenusDeOpciones.solicitarFechaVenta();
+                                        JOptionPane.showMessageDialog(null, "Este opcion no ha sido implementada todavia, disculpe las molestias");
+                                        break;
+                                    }
+                                    case 2 -> {//Todas las ventas
+                                        JOptionPane.showMessageDialog(null, Metodos.mostrarAllTickets(ventas.ventas));
+                                    }
+                                }
                             }
+                            
                             case 4 -> {//volver
                                 break;
                             }
@@ -568,54 +411,7 @@ public class Tpv {
         return aux;
     }
 
-    public void pedirDatosProducto(Productos p1, Catalogo c1) {
-        double precio = 0;
-        boolean repetir;
-        do {
-            do {
-                try {
-                    precio = Double.parseDouble(
-                            JOptionPane.showInputDialog(null,
-                                    "Introduzca el precio"));
-                    repetir = false;
-                } catch (NumberFormatException nfe) {
-                    JOptionPane.showMessageDialog(null,
-                            "Introduzca una opcion valida");
-                    repetir = true;
-                }
-            } while (repetir);
-        } while (precio <= 0);
-        p1.setPrecioBase(precio);
 
-        String descripcion = JOptionPane.showInputDialog(null, "Introduzca la descripcion");
-        p1.setDescripcion(descripcion);
-
-        double iva = 0;
-        do {
-            try {
-                iva = Double.parseDouble(
-                        JOptionPane.showInputDialog(null,
-                                "Introduzca el iva (Formato 0."));
-                repetir = false;
-            } catch (NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(null,
-                        "Introduzca una opcion valida");
-                repetir = true;
-            }
-        } while (repetir);
-        p1.setIva(iva);
-        Integer cambiarEstado = JOptionPane.showOptionDialog(null, "Establezca el stock del producto",
-                "Selector de estado de stock", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
-                null,
-                new Object[]{"Hay stock", "Sin stock"}, null);
-        if(cambiarEstado.equals(0)){
-            p1.setStock(true);
-        }else{
-            p1.setStock(false);
-        }
-        
-        p1.setId(c1.tamañoCatalogo() + 1);
-    }
 
     public void añadirProducto(String menu, Catalogo catalogo, Carrito carrito,ArrayList<Integer> numValidos) {
         int producto = 0;

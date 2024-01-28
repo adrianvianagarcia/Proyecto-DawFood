@@ -15,7 +15,7 @@ public class Carrito {
     public double precioTotal() {
         double precioTotal = 0;
         for (int i = 0; i < carrito.size(); i++) {
-            precioTotal = +carrito.get(i).getPrecioTotal();
+            precioTotal += carrito.get(i).getPrecioTotal();
         }
         return precioTotal;
     }

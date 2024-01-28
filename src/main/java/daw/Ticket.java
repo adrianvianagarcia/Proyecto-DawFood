@@ -89,7 +89,7 @@ public class Ticket {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Su ticket: ").append("\n");
+        sb.append("Ticket: ").append("\n");
         sb.append("Id del ticket: ").append(id).append("\n");
         sb.append("Pedido: ").append(numeroPedido).append("\n");
         sb.append("Total a pagar: ").append(precioTotal).append("€").append("\n");
