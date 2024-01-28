@@ -1,7 +1,7 @@
 package daw;
 
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
 
         //Encendemos el tpv//
         Tpv tpv =new Tpv("Estepona");

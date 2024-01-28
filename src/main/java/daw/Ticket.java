@@ -89,13 +89,12 @@ public class Ticket {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Su ticket: ");
-        sb.append("id=").append(id);
-        sb.append(", numeroPedido=").append(numeroPedido);
-        sb.append(", precioTotal=").append(precioTotal);
-        sb.append(", fechaPedido=").append(fechaPedido);
-        sb.append(", listaProductosComprados=").append(Metodos.mostrarProductoCarrito(listaProductosComprados));
-        sb.append('}');
+        sb.append("Su ticket: ").append("\n");
+        sb.append("Id del ticket: ").append(id).append("\n");
+        sb.append("Pedido: ").append(numeroPedido).append("\n");
+        sb.append("Total a pagar: ").append(precioTotal).append("€").append("\n");
+        sb.append("Fecha del pedido: ").append(fechaPedido).append("\n");
+        sb.append(Metodos.mostrarProductoCarrito(listaProductosComprados));
         return sb.toString();
     }
 

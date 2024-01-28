@@ -15,7 +15,7 @@ public class Productos {
     public Productos(TipoProducto tipo, Consumibles consumible, double precioBase, String descripcion, int id, double iva, boolean stock) {
         this.tipo = tipo;
         this.consumible = consumible;
-        this.precioBase = precioBase;
+        this.precioBase = precioBase + (precioBase*iva);
         this.descripcion = descripcion;
         this.id = id;
         this.iva = iva;
@@ -127,10 +127,9 @@ public class Productos {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("").append(descripcion);
-        sb.append(precioBase).append(" €");
-        sb.append(", iva: ").append(iva);
-        sb.append(", idProducto: ").append(id);
+        sb.append(id);
+        sb.append(" ").append(descripcion).append(":");
+        sb.append(" Precio: ").append(precioBase).append("€");
         return sb.toString();
     }
 

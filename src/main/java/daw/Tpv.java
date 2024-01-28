@@ -55,7 +55,7 @@ public class Tpv {
         return errorContra;
     }
 
-    public void encenderTPV() throws InterruptedException {
+    public void encenderTPV() {
         final int diaMes = 1;
         // inicializamos las ventas
         Ventas ventas = new Ventas();
@@ -296,7 +296,8 @@ public class Tpv {
                                             ventas.ventas.add(ticket);
                                             ticket.setId(ventas.tamañoVentas());
                                             ticket.estabelecerNumPedido(ventas.ventas);
-
+                                            JOptionPane.showMessageDialog(null, ticket);
+                                            
                                             carrito.carrito.clear();
 
                                         }
@@ -396,6 +397,8 @@ public class Tpv {
                                             }
                                         } while (repetir);
                                         catalogo.posElemento(i).setIva(ivaNuevo);
+                                        catalogo.posElemento(i).setPrecioBase(catalogo.posElemento(i)
+                                                .getPrecioBase()+(catalogo.posElemento(i).getPrecioBase()*ivaNuevo));
                                     }
 
                                     case 3 -> {
@@ -552,7 +555,7 @@ public class Tpv {
 
     }
 
-    public void apagarTVP() throws InterruptedException {
+    public void apagarTVP() {
         JOptionPane.showMessageDialog(null, "Se apagará el TPV");
     }
 
