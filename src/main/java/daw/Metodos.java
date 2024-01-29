@@ -16,7 +16,8 @@ import javax.swing.JOptionPane;
  */
 public class Metodos {
 
-    public static String mostrarProducto(ArrayList<Productos> lista) {
+    public static String mostrarProducto(ArrayList<Productos> lista) {/*Metodo que muestra 
+        los productos guardados en un arraList de productos*/
         String aux = "";
         for (int i = 0; i < lista.size(); i++) {/*Actualiza mi String y le añade
             todas las palabras en cada iteracion*/
@@ -36,7 +37,8 @@ public class Metodos {
         return numValidos;
     }
 
-    public static String mostrarProductoCarrito(ArrayList<ProductoCarrito> lista) {
+    public static String mostrarProductoCarrito(ArrayList<ProductoCarrito> lista) {/*Metodo que muestra 
+        los productos guardados en un arraList de productoCarrito*/
         String aux = "";
         for (int i = 0; i < lista.size(); i++) {/*Actualiza mi String y le añade
             todas las palabras en cada iteracion*/
@@ -46,7 +48,8 @@ public class Metodos {
         return aux;
     }
 
-    public static String mostrarTicketFecha(ArrayList<Ticket> lista, LocalDate fecha) {
+    public static String mostrarTicketFecha(ArrayList<Ticket> lista, LocalDate fecha) {/*Metodo que muestra 
+        los productos tickets en un arraList de Tickets(ventas) hasta una fecha*/
         LocalDateTime Fecha;
         String aux = "";
         for (int i = 0; i < lista.size(); i++) {/*Actualiza mi String y le añade
@@ -62,7 +65,8 @@ public class Metodos {
         }
         return aux;
     }
-    public static String mostrarAllTickets(ArrayList<Ticket> lista) {
+    public static String mostrarAllTickets(ArrayList<Ticket> lista) {/*Metodo que muestra 
+        todos los tickets guardados en un arraList de tickets*/
         String aux = "";
         for (int i = 0; i < lista.size(); i++) {/*Actualiza mi String y le añade
             todas las palabras en cada iteracion*/
@@ -72,6 +76,8 @@ public class Metodos {
     }
     
     public static TarjetasDeCredito pasarelaDePago(ArrayList<TarjetasDeCredito> baseDatosTarjetas) {
+        /*Metodo utilizado para verificar que la tarjeta que el cliente introduzca
+        es una tarjeta que se encuentra en nuestra base de datos*/
         boolean compraValida = false;
         TarjetasDeCredito tarjeta = null;
 
