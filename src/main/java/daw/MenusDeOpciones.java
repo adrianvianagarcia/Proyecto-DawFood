@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  */
 public class MenusDeOpciones {
 
-    public static Object selectorDeUsuarios() {
+    public static Object selectorDeUsuarios() {//Menú principal (ojo, duevuelve un objeto que se llama igual que la opcion)
         Object opcion = JOptionPane.showInputDialog(
                 null,
                 "Seleccione un usuario o apague el tpv",
@@ -31,7 +31,7 @@ public class MenusDeOpciones {
         return opcion;
     }
 
-    public static int selectorDeProducto() {
+    public static int selectorDeProducto() {//Menu de selecion de productos
         int opcion = JOptionPane.showOptionDialog(null, "¿Qué desea ver?",
                 "Selector opciones", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
                 null,
@@ -39,7 +39,8 @@ public class MenusDeOpciones {
         return opcion;
     }
 
-    public static int selectorDeProductoAdmin() {
+    public static int selectorDeProductoAdmin() {/*Menu de seleccion de productos
+        del administrador para cuando quiera modificar// crear // borrar un producto*/
         int opcion = JOptionPane.showOptionDialog(null, "Seleccione el tipo de producto",
                 "Selector opciones", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
                 null,
@@ -47,14 +48,15 @@ public class MenusDeOpciones {
         return opcion;
     }
 
-    public static int selectorDeAtributo() {
+    public static int selectorDeAtributo() {/*Se utiliza en las funciones del
+        administrador. selecciona el atributo que se quiere añadir//modificar*/
         int opcion = JOptionPane.showOptionDialog(null, "¿Qué atributo desea cambiar?",
                 "Selector opciones", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
                 null,
                 new Object[]{"Precio", "Descripcion", "Iva", "Stock", "Volver"}, null);
         return opcion;
     }
-    public static int selectorFechasAdmin() {//El admin introduce la fecha a mirar de las ventas
+    public static int selectorFechasAdmin() {//El admin introduce la fecha por la que filtrar de las ventas
         int opcion;
         opcion = JOptionPane.showOptionDialog(null, "Selecciones un periodo para consultar las ventas",
                 "Selector opciones", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
@@ -63,7 +65,7 @@ public class MenusDeOpciones {
         return opcion;
     }
     //COMIDAS
-    public static int selectorComidas() {//devuelve directamente el id del producto
+    public static int selectorComidas() {//devuelve un int al que se le hace un switch en el tpv
         int opcion;
         opcion = JOptionPane.showOptionDialog(null, "¿Qué desea comer?",
                 "Selector comida", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
@@ -72,7 +74,7 @@ public class MenusDeOpciones {
         return opcion;
     }
 
-    public static int selectorComidasAdmin() {//devuelve directamente el id del producto
+    public static int selectorComidasAdmin() {//devuelve un int al que se le hace un switch en el tpv
         int opcion;
         opcion = JOptionPane.showOptionDialog(null, "Seleccione el producto",
                 "Selector comida", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
@@ -81,7 +83,7 @@ public class MenusDeOpciones {
         return opcion;
     }
 
-    public static int selectorBebidas() {//devuelve directamente el id del producto
+    public static int selectorBebidas() {//devuelve un int al que se le hace un switch en el tpv
         int opcion;
         opcion = JOptionPane.showOptionDialog(null, "¿Qué desea beber?",
                 "Selector bebidas", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
@@ -90,7 +92,8 @@ public class MenusDeOpciones {
         return opcion;
     }
 
-    public static int selectorBebidasAdmin() {//devuelve directamente el id del producto
+    public static int selectorBebidasAdmin() {//devuelve un int al que se le hace un switch en el tpv 
+        //en los metodos del admin
         int opcion;
         opcion = JOptionPane.showOptionDialog(null, "Seleccione el producto",
                 "Selector bebidas", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
@@ -99,7 +102,7 @@ public class MenusDeOpciones {
         return opcion;
     }
 
-    public static int selectorPostres() {//devuelve directamente el id del producto
+    public static int selectorPostres() {//devuelve un int al que se le hace un switch en el tpv
         int opcion;
         opcion = JOptionPane.showOptionDialog(null, "¿Qué desea tomar de postre?",
                 "Selector postre", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
@@ -108,7 +111,8 @@ public class MenusDeOpciones {
         return opcion;
     }
 
-    public static int selectorPostresAdmin() {//devuelve directamente el id del producto
+    public static int selectorPostresAdmin() {//devuelve un int al que se le hace un switch en el tpv 
+        //en los metodos del admin
         int opcion;
         opcion = JOptionPane.showOptionDialog(null, "Seleccione el producto",
                 "Selector postre", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
@@ -117,7 +121,7 @@ public class MenusDeOpciones {
         return opcion;
     }
 
-    public static int selectorCarrito() {
+    public static int selectorCarrito() {//devuelve un int al que se le hace un switch en el tpv 
         int opcion = JOptionPane.showOptionDialog(null, "¿Qué desea ver?",
                 "Carrito", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
                 null,
@@ -126,7 +130,8 @@ public class MenusDeOpciones {
         return opcion;
     }
 
-    public static int selectorDeOpcionesAdmin() {
+    public static int selectorDeOpcionesAdmin() {//devuelve un int al que se le hace un switch en el tpv 
+        //en los metodos del admi
         int opcion = JOptionPane.showOptionDialog(null, "¿Qué desea hacer?",
                 "Selector opciones", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
                 null,
@@ -134,7 +139,8 @@ public class MenusDeOpciones {
         return opcion;
     }
 
-    public static int selectorDeCantidad() {
+    public static int selectorDeCantidad() {/*Devuelve un int con el que se hará
+        un setter a ProductoCarrito.setCantidad*/
         int opcion = 0;
         do {
             try {
@@ -150,6 +156,8 @@ public class MenusDeOpciones {
     }
 
     public static ProductoCarrito selectorProducto(int idProducto, Catalogo catalogo) {
+        /*Es un metodo que funciona como un conversor de Productos a ProductoCarrito*/
+        //variables
         ProductoCarrito producto = new ProductoCarrito();
         int IdProducto = idProducto;
         //busca el porducto y lo guarda en uno de tipo ProductoCarrito
@@ -159,8 +167,6 @@ public class MenusDeOpciones {
                 producto.setConsumible(catalogo.catalogo.get(i).getConsumible());
                 producto.setDescripcion(catalogo.catalogo.get(i).getDescripcion());
                 producto.setIva(catalogo.catalogo.get(i).getIva());
-//                producto.setCantidad(cantidad);
-//                producto.setPrecioTotal(cantidad * producto.getPrecioBase());
             } else {
 
             }
@@ -169,7 +175,9 @@ public class MenusDeOpciones {
         return producto;
     }
 
-    public static int solicitarCVV() {
+    public static int solicitarCVV() {/*Metodo que devuelve un int que servirá para usarse 
+        de CVV en las trajetas. Se utiliza principalmente en Metodos.pasarelaDePago*/
+        //variables
         int Cvv = 0;
         String cvv = " ";
         boolean errorCvv = true;
@@ -188,7 +196,9 @@ public class MenusDeOpciones {
         return Cvv;
     }
 
-    public static int solicitarNumTarjeta() {
+    public static int solicitarNumTarjeta() {/*Metodo que devuelve un int que servirá para usarse 
+        de número de tarjeta en las trajetas. Se utiliza principalmente en Metodos.pasarelaDePago*/
+        //variables
         int NumTarjeta = 0;
         String numTarjeta = " ";
         boolean errorNumTarjeta = true;
@@ -208,12 +218,13 @@ public class MenusDeOpciones {
         return NumTarjeta;
     }
 
-    public static LocalDate solicitarFechaCaducidad() {
+    public static LocalDate solicitarFechaCaducidad() {/*Metodo que devuelve un LocalDate que servirá para usarse 
+        de fecha de caducidad en las trajetas. Se utiliza principalmente en Metodos.pasarelaDePago*/
         //inicializamos variables para que el programa funcione
         LocalDate reserva = null;
         boolean errorFecha = true;
-        int año = -125;
-        int mes = 50;
+        int año = -125;//son valores por defectos que NO pueden aplicarse ni como año
+        int mes = 50;//Ni como mes
         boolean errorFechaInt = true;
         //entrada de datos
         do {
@@ -241,6 +252,8 @@ public class MenusDeOpciones {
     }
 
     public static void menuBorrarProducto(int eleccion, String listaProductosCatalogo, Catalogo catalogo) {
+        /*Es un menu que borrará un objeto de tipo Producto. Se utiliza en las 
+        funciones de administrador, dentro del tpv*/
         do {
             try {
                 eleccion = Integer.parseInt(
@@ -251,17 +264,17 @@ public class MenusDeOpciones {
                         "Introduzca una opcion valida");
             }
         } while (eleccion <= 0 || eleccion > catalogo.tamañoCatalogo());
-        int i;
-        for (i = 0; i < catalogo.tamañoCatalogo(); i++) {
+        for (int i = 0; i < catalogo.tamañoCatalogo(); i++) {
             if (eleccion == (catalogo.posElemento(i).getId())) {
+                catalogo.borrarProductoExistente(i);
                 break;
             }
         }
-        catalogo.borrarProductoExistente(i);
+        
     }
 
     public static void menuAñadirProducto(int opcionMenuTipoProducto, Productos p1, Catalogo catalogo) {
-        switch (opcionMenuTipoProducto) {
+        switch (opcionMenuTipoProducto) {//Menu que CREA un nuevo producto. Utilizado por el admin
             case 0 -> {
                 p1.setTipo(TipoProducto.COMIDA);
                 int opcionMenuComida = MenusDeOpciones.selectorComidasAdmin();
@@ -332,7 +345,7 @@ public class MenusDeOpciones {
     }
 
     public static void cambiarPorducto(String listaProductosCatalogo, int eleccion, Catalogo catalogo) {
-        do {
+        do {//metodo que cambia los datos de los objetos
             try {
                 eleccion = Integer.parseInt(
                         JOptionPane.showInputDialog(null,
@@ -424,7 +437,10 @@ public class MenusDeOpciones {
 
     }
 
-    public static void pedirDatosProducto(Productos p1, Catalogo c1) {
+    public static void pedirDatosProducto(Productos p1, Catalogo c1) {/*Metodo
+        que pide las datos del producto con el fin de utilizarse en otros metodos,
+        como añadir producto o modificar producto*/
+        //variable
         double precio = 0;
         boolean repetir;
         do {
@@ -473,7 +489,8 @@ public class MenusDeOpciones {
         p1.setId(c1.tamañoCatalogo() + 1);
     }
 
-    public static LocalDate solicitarFechaVenta() {
+    public static LocalDate solicitarFechaVenta() { /*Devuelve una fecha que se 
+        utilizará para filtrar la busqueda de ventas hasta una fecha concreta*/
         //inicializamos variables para que el programa funcione
         LocalDate diaConcreto = null;
         boolean errorFecha = true;
