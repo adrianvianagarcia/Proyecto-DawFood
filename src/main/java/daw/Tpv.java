@@ -474,7 +474,7 @@ public class Tpv {
         } while (idInvalida);
         p1=MenusDeOpciones.selectorProducto(producto, catalogo);
         int cantidad = MenusDeOpciones.selectorDeCantidad();
-        p1.setId(carrito.tamañoCarrito());
+        p1.setId(carrito.tamañoCarrito()+1);
         p1.setCantidad(cantidad);
         p1.setPrecioTotal(p1.getPrecioBase()*cantidad);
         carrito.carrito.add(p1);

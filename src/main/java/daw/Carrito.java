@@ -2,14 +2,16 @@ package daw;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class Carrito {
 
-    
-    ArrayList<ProductoCarrito> carrito = new ArrayList<>();
+    Map<Integer,Integer> carrito=new TreeMap<>();
+
 
     public void guardarElemento(ProductoCarrito p1) {
-        carrito.add(p1);
+        carrito.put(p1.getId(),p1.getCantidad());
     }
 
     public double precioTotal() {

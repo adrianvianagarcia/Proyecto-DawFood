@@ -143,13 +143,18 @@ public class MenusDeOpciones {
         un setter a ProductoCarrito.setCantidad*/
         int opcion = 0;
         do {
+            String aux="";
             try {
-                opcion = Integer.parseInt(
-                        JOptionPane.showInputDialog(null,
-                                "Introduce una cantidad"));
+                aux = JOptionPane.showInputDialog(null,
+                                "Introduce una cantidad");
+                opcion = Integer.parseInt(aux);
             } catch (NumberFormatException nfe) {
+                if (aux != null)
                 JOptionPane.showMessageDialog(null,
                         "Introduzca una opcion valida");
+                else{
+                    
+                }
             }
         } while (opcion <= 0);
         return opcion;
